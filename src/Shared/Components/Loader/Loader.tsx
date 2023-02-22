@@ -23,6 +23,5 @@ export const Loader: React.FC<LoaderProps> = ({
   className,
 }) => {
   const loaderClasses = classNames("loader", `loader_size-${size}`, className);
-  if (!loading) return null;
-  return <div className={loaderClasses}></div>;
+  return loading ? <div className={loaderClasses}></div> : null;
 };
