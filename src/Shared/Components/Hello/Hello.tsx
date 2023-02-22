@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./styleHello.scss";
+import styleHello from "./styleHello.module.scss";
 
 const Hello: React.FC = () => {
-  return <div className="Hello">Hello!!!</div>;
+  return <div className={styleHello.hello}>Hello!!!</div>;
 };
 
 export default Hello;

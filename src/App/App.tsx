@@ -1,12 +1,11 @@
 import React from "react";
 
 import Greet from "./Pages/Greet";
-
-import "./styleApp.scss";
+import styleApp from "./styleApp.module.scss";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className={styleApp.app}>
       <Greet />
     </div>
   );
