@@ -1,6 +1,13 @@
 {
   "name": "coingecko-webclient",
   "version": "0.1.0",
+  "description": "Web-client for CoinGecko API in ReactJS",
+  "repository": {
+    "url": "https://github.com/junproger/coingecko-webclient",
+    "type": "git"
+  },
+  "author": "JunProger <junproger@gmail.com>",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
