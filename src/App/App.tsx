@@ -1,12 +1,13 @@
 import React from "react";
 
-import Greet from "./Pages/Greet";
+import { Loader } from "@Components/Loader";
+
 import styleApp from "./styleApp.module.scss";
 
 const App: React.FC = () => {
   return (
     <div className={styleApp.app}>
-      <Greet />
+      <Loader loading={true} />
     </div>
   );
 };

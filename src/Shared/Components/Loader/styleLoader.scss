@@ -1,0 +1,33 @@
+.loader {
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #6C757D;
+  border-right-color: transparent;
+  -webkit-transform: rotate(35deg);
+  -moz-transform: rotate(35deg);
+  -ms-transform: rotate(35deg);
+  -o-transform: rotate(35deg);
+  transform: rotate(35deg);
+
+  &_size-l {
+    width: 60px;
+    height: 60px;
+    border-width: 6px;
+  }
+
+  &_size-m {
+    width: 40px;
+    height: 40px;
+    border-width: 4.5px;
+  }
+
+  &_size-s {
+    width: 20px;
+    height: 20px;
+    border-width: 3px;
+  }
+  
+}
