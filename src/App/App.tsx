@@ -1,8 +1,15 @@
 import React from "react";
-import "./App.css";
+
+import Greet from "./Pages/Greet";
+
+import "./styleApp.scss";
 
 const App: React.FC = () => {
-  return <div className="App">Hello!!!</div>;
+  return (
+    <div className="App">
+      <Greet />
+    </div>
+  );
 };
 
 export default App;
