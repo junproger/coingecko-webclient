@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@Components/Button";
 import { Card } from "@Components/Card";
+import { CheckBox } from "@Components/CheckBox";
 import { Input } from "@Components/Input";
 import { Loader } from "@Components/Loader";
 import { WithLoader } from "@Components/WithLoader";
@@ -9,10 +10,13 @@ import { WithLoader } from "@Components/WithLoader";
 import styleApp from "./styleApp.module.scss";
 
 const App: React.FC = () => {
+  const [getCheck, setCheck] = useState<boolean>(true);
+
   return (
     <div className={styleApp.app}>
       <Loader loading={true} />
       <WithLoader loading={true}>Page content</WithLoader>
+      <CheckBox checked={getCheck} onChange={setCheck} />
       <Input
         disabled
         value="What is Bitcoin?"
