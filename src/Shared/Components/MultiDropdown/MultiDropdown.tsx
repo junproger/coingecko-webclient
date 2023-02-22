@@ -13,6 +13,7 @@ export interface Option {
 }
 
 export interface MultiDropdownProps {
+  tabIndex?: number;
   value: Option[];
   options: Option[];
   onChange: (value: Option[]) => void;
@@ -23,6 +24,7 @@ export interface MultiDropdownProps {
 }
 
 export const MultiDropdown: React.FC<MultiDropdownProps> = ({
+  tabIndex = 1,
   value = [],
   options,
   onChange,
@@ -63,6 +65,7 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
   return (
     <div className={MultiDropdownClasses}>
       <div
+        tabIndex={tabIndex}
         className="multi-dropdown__window"
         onClick={() => setVisible(!getVisible)}
       >

@@ -45,6 +45,7 @@ const App: React.FC = () => {
         subtitle="BTC"
       />
       <MultiDropdown
+        tabIndex={1}
         value={value}
         disabled={false}
         options={options}
