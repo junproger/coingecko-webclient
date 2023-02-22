@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button } from "@Components/Button";
+import { Card } from "@Components/Card";
 import { Loader } from "@Components/Loader";
 import { WithLoader } from "@Components/WithLoader";
 
@@ -14,6 +15,12 @@ const App: React.FC = () => {
       <Button loading={true} disabled>
         Cancel
       </Button>
+      <Card
+        alt="Bitcoin"
+        image="https://www.file-extensions.org/imgs/app-icon/128/10409/bitcoin-core-icon.png"
+        title="Bitcoin"
+        subtitle="BTC"
+      />
     </div>
   );
 };
