@@ -1,0 +1,91 @@
+import React, { useState } from "react";
+
+import classNames from "classnames";
+
+import "@Styles/styleIndex.scss";
+import "./styleMultiDropdown.scss";
+
+export interface Option {
+  /** Ключ варианта, используется в скриптах */
+  key: string;
+  /** Значение варианта, отображается на сайте */
+  value: string;
+}
+
+export interface MultiDropdownProps {
+  value: Option[];
+  options: Option[];
+  onChange: (value: Option[]) => void;
+  pluralizeOptions: (value: Option[]) => string;
+  placeHolder?: string;
+  className?: string;
+  disabled?: boolean;
+}
+
+export const MultiDropdown: React.FC<MultiDropdownProps> = ({
+  value = [],
+  options,
+  onChange,
+  placeHolder,
+  disabled = false,
+  pluralizeOptions,
+  className,
+}) => {
+  /** State for a visibility of MDD list */
+  const [getVisible, setVisible] = useState<boolean>(false);
+
+  /** Const with classes of the styles MDD */
+  const MultiDropdownClasses = classNames(
+    "multi-dropdown",
+    { "multi-dropdown_disabled": disabled },
+    className
+  );
+
+  /** Handler for the selected options MDD */
+  const clickHandle = (option: Option) => {
+    if (value.every((item) => item.key !== option.key)) {
+      onChange([...value, option]);
+    } else {
+      onChange(value.filter((item) => item.key !== option.key));
+    }
+  };
+
+  /** Checking are choosed options */
+  const isItemChoosed = (item: Option) => {
+    if (value.find((elem) => elem.key === item.key)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  /** Handler for the selected options MDD */
+  return (
+    <div className={MultiDropdownClasses}>
+      <div
+        className="multi-dropdown__window"
+        onClick={() => setVisible(!getVisible)}
+      >
+        {pluralizeOptions(value) || placeHolder}
+      </div>
+      {getVisible && !disabled && (
+        <div className="multi-dropdown__list">
+          {options.map((option) => (
+            <div
+              id={option.key}
+              key={option.key}
+              onClick={() => clickHandle(option)}
+              className={
+                isItemChoosed(option)
+                  ? "multi-dropdown__item multi-dropdown__item_choosed"
+                  : "multi-dropdown__item"
+              }
+            >
+              {option.value}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
