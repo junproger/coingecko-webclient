@@ -1,15 +1,9 @@
-import React, { ChangeEvent, InputHTMLAttributes } from "react";
+import React, { ChangeEvent } from "react";
 
 import classNames from "classnames";
-import "./styleCheckBox.scss";
 
-export interface CheckBoxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
-  checked?: boolean | undefined;
-  disabled?: boolean | undefined;
-  onChange: (value: boolean) => void;
-  className?: string;
-}
+import { CheckBoxProps } from "./propsCheckBox";
+import "./styleCheckBox.scss";
 
 export const CheckBox: React.FC<CheckBoxProps> = ({
   checked = false,
