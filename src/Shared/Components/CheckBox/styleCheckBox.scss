@@ -1,6 +1,6 @@
 .checkbox {
-  --checkbord: 1px solid #6C757D;
-  --checkmark: 2px solid #6C757D;
+  $checkbord: 1px solid #6C757D;
+  $checkmark: 2px solid #6C757D;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -24,8 +24,8 @@
     height: 15px;
     top: 3px;
     left: 8px;
-    border-right: var(--checkmark);
-    border-bottom: var(--checkmark);
+    border-right: $checkmark;
+    border-bottom: $checkmark;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -43,11 +43,11 @@
   }
 
   &:focus {
-    border: var(--checkbord);
+    border: $checkbord;
   }
 
   &:hover {
-    border: var(--checkbord);
+    border: $checkbord;
     cursor: pointer;
   }
 
