@@ -1,5 +1,6 @@
 import React from 'react';
-import { Input, InputProps } from './Input';
+import { Input } from './Input';
+import { InputProps } from "./propsInput";
 
 export default {
   title: 'Input',

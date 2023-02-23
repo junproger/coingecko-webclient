@@ -1,16 +1,9 @@
-import React, { ChangeEvent, InputHTMLAttributes } from "react";
+import React, { ChangeEvent } from "react";
 
 import classNames from "classnames";
-import "./styleInput.scss";
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
-  value: string;
-  disabled?: boolean | undefined;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  className?: string;
-}
+import { InputProps } from "./propsInput";
+import "./styleInput.scss";
 
 export const Input: React.FC<InputProps> = ({
   value = "",
