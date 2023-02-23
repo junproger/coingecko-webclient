@@ -3,7 +3,7 @@ import React, { ChangeEvent } from "react";
 import classNames from "classnames";
 
 import { CheckBoxProps } from "./propsCheckBox";
-import "./styleCheckBox.scss";
+import styleCheckBox from "./styleCheckBox.module.scss";
 
 export const CheckBox: React.FC<CheckBoxProps> = ({
   checked = false,
@@ -13,8 +13,8 @@ export const CheckBox: React.FC<CheckBoxProps> = ({
   ...attrib
 }) => {
   const checkClasses = classNames(
-    "checkbox",
-    { checkbox_disabled: disabled },
+    styleCheckBox.checkbox,
+    { [styleCheckBox.checkbox_disabled]: disabled },
     className
   );
   const checkHandler = (event: ChangeEvent<HTMLInputElement>) => {
