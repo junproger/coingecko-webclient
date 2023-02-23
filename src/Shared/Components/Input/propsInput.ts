@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   value: string;
