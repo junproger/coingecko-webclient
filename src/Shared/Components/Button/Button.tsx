@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Loader } from "@Components/Loader";
-import { LoaderSize } from "@Components/Loader";
+import { Loader, LoaderSize } from "@Components/Loader";
 import classNames from "classnames";
 
 import { ButtonProps } from "./propsButton";
