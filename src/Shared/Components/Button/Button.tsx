@@ -4,8 +4,7 @@ import { Loader, LoaderSize } from "@Components/Loader";
 import classNames from "classnames";
 
 import { ButtonProps } from "./propsButton";
-
-import "./styleButton.scss";
+import styleButton from "./styleButton.module.scss";
 
 export const Button: React.FC<ButtonProps> = ({
   loading = false,
@@ -16,8 +15,8 @@ export const Button: React.FC<ButtonProps> = ({
   ...attrib
 }) => {
   const buttonClasses = classNames(
-    "button",
-    { button_disabled: loading || disabled },
+    styleButton.button,
+    { [styleButton.button_disabled]: loading || disabled },
     className
   );
   return (
