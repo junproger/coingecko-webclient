@@ -1,25 +1,9 @@
 import React, { useState } from "react";
 
 import classNames from "classnames";
+
+import { MultiDropdownProps, Option } from "./propsMultiDropdown";
 import "./styleMultiDropdown.scss";
-
-export interface Option {
-  /** Ключ варианта, используется в скриптах */
-  key: string;
-  /** Значение варианта, отображается на сайте */
-  value: string;
-}
-
-export interface MultiDropdownProps {
-  tabIndex?: number;
-  value: Option[];
-  options: Option[];
-  onChange: (value: Option[]) => void;
-  pluralizeOptions: (value: Option[]) => string;
-  placeHolder?: string;
-  className?: string;
-  disabled?: boolean;
-}
 
 export const MultiDropdown: React.FC<MultiDropdownProps> = ({
   tabIndex = 1,
