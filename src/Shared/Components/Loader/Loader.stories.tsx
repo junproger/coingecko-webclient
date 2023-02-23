@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Loader, LoaderProps } from './Loader';
+import { Loader } from './Loader';
+import { LoaderProps } from "./propsLoader";
 
 export default {
   title: 'Loader',

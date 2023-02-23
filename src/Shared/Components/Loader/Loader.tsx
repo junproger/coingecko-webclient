@@ -1,19 +1,10 @@
 import React from "react";
 
 import classNames from "classnames";
+
+import { LoaderProps, LoaderSize } from "./propsLoader";
+
 import "./styleLoader.scss";
-
-export enum LoaderSize {
-  s = "s",
-  m = "m",
-  l = "l",
-}
-
-export interface LoaderProps {
-  loading?: boolean | undefined;
-  size?: LoaderSize;
-  className?: string;
-}
 
 export const Loader: React.FC<LoaderProps> = ({
   loading = true,

@@ -1,6 +1,7 @@
 import React, { ReactNode, ButtonHTMLAttributes } from "react";
 
-import { Loader, LoaderSize } from "@Components/Loader";
+import { Loader } from "@Components/Loader";
+import { LoaderSize } from "@Components/Loader/propsLoader";
 import classNames from "classnames";
 
 import "./styleButton.scss";
