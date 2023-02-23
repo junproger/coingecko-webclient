@@ -1,18 +1,12 @@
-import React, { ReactNode, ButtonHTMLAttributes } from "react";
+import React from "react";
 
 import { Loader } from "@Components/Loader";
 import { LoaderSize } from "@Components/Loader/propsLoader";
 import classNames from "classnames";
 
-import "./styleButton.scss";
+import { ButtonProps } from "./propsButton";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  loading?: boolean | undefined;
-  onClick?: () => void;
-  className?: string;
-  children: ReactNode;
-  disabled?: boolean;
-}
+import "./styleButton.scss";
 
 export const Button: React.FC<ButtonProps> = ({
   loading = false,
