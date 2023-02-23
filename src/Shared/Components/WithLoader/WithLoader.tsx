@@ -1,15 +1,11 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import { Loader } from "@Components/Loader";
 import classNames from "classnames";
 
-import "./styleWithLoader.scss";
+import { WithLoaderProps } from "./propsWithLoader";
 
-export interface WithLoaderProps {
-  loading: boolean | undefined;
-  className?: string;
-  children: ReactNode;
-}
+import "./styleWithLoader.scss";
 
 export const WithLoader: React.FC<WithLoaderProps> = ({
   loading = false,

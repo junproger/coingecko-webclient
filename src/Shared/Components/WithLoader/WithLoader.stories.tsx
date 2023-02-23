@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { WithLoader, WithLoaderProps } from './WithLoader';
+import { WithLoaderProps } from "./propsWithLoader";
+import { WithLoader } from './WithLoader';
 
 export default {
   title: 'WithLoader',
