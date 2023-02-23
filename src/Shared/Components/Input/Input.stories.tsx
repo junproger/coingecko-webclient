@@ -1,34 +1,33 @@
-import React from 'react';
-import { Input } from './Input';
+import React from "react";
+
+import { Input } from "./Input";
 import { InputProps } from "./propsInput";
 
 export default {
-  title: 'Input',
+  title: "Input",
   component: Input,
   argTypes: {
     value: {
-      control: 'text',
+      control: "text",
       mapping: {
-        'undefined': undefined,
-      }
+        undefined: undefined,
+      },
     },
     placeholder: {
-      control: 'text',
+      control: "text",
       mapping: {
-        'undefined': undefined,
-      }
+        undefined: undefined,
+      },
     },
     disabled: {
       mapping: {
-        'true': true,
-        'false': false,
-        'undefined': undefined,
+        true: true,
+        false: false,
+        undefined: undefined,
       },
-      control: 'boolean'
-    }
+      control: "boolean",
+    },
   },
 };
 
-export const Default = (props: InputProps) => (
-    <Input {...props} />
-);
+export const Default = (props: InputProps) => <Input {...props} />;

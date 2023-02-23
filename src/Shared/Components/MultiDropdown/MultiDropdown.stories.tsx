@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { MultiDropdown } from './MultiDropdown';
+import { MultiDropdown } from "./MultiDropdown";
 import { MultiDropdownProps, Option } from "./propsMultiDropdown";
 
 const OPTIONS = [
-  { key: 'msk', value: 'Moscow' },
-  { key: 'spb', value: 'Saint Petersburg' },
-  { key: 'ekb', value: 'Ekaterinburg' },
+  { key: "msk", value: "Moscow" },
+  { key: "spb", value: "Saint Petersburg" },
+  { key: "ekb", value: "Ekaterinburg" },
 ];
 
 export default {
-  title: 'MultiDropdown',
+  title: "MultiDropdown",
   component: MultiDropdown,
   argTypes: {
     value: {
@@ -19,17 +19,19 @@ export default {
     },
     disabled: {
       mapping: {
-        'true': true,
-        'false': false,
-        'undefined': undefined,
+        true: true,
+        false: false,
+        undefined: undefined,
       },
-      control: 'boolean'
-    }
+      control: "boolean",
+    },
   },
 };
 
 export const Default = (props: MultiDropdownProps) => {
-  const [value, setValue] = React.useState<Option[]>(Array.isArray(props.value) ? props.value : []);
+  const [value, setValue] = React.useState<Option[]>(
+    Array.isArray(props.value) ? props.value : []
+  );
 
   return (
     <MultiDropdown
@@ -37,7 +39,9 @@ export const Default = (props: MultiDropdownProps) => {
       options={OPTIONS}
       onChange={setValue}
       value={value}
-      pluralizeOptions={(values: Option[]) => values.length === 0 ? 'Выберите город': `Выбрано: ${values.length}`}
-  />
+      pluralizeOptions={(values: Option[]) =>
+        values.length === 0 ? "Выберите город" : `Выбрано: ${values.length}`
+      }
+    />
   );
 };

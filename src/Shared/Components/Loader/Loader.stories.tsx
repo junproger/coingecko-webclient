@@ -1,29 +1,27 @@
-import React from 'react';
+import React from "react";
 
-import { Loader } from './Loader';
+import { Loader } from "./Loader";
 import { LoaderProps } from "./propsLoader";
 
 export default {
-  title: 'Loader',
+  title: "Loader",
   component: Loader,
   argTypes: {
     size: {
       mapping: {
-        'undefined': undefined,
+        undefined: undefined,
       },
-      control: 'text'
+      control: "text",
     },
     loading: {
       mapping: {
-        'true': true,
-        'false': false,
-        'undefined': undefined,
+        true: true,
+        false: false,
+        undefined: undefined,
       },
-      control: 'boolean'
-    }
+      control: "boolean",
+    },
   },
 };
 
-export const Default = (props: LoaderProps) => (
-  <Loader {...props}/>
-);
+export const Default = (props: LoaderProps) => <Loader {...props} />;

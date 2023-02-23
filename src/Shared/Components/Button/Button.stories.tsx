@@ -1,39 +1,37 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 import { ButtonProps } from "./propsButton";
 
 export default {
-  title: 'Button',
+  title: "Button",
   component: Button,
   argTypes: {
     disabled: {
       control: {
-        type: 'boolean'
+        type: "boolean",
       },
       mapping: {
-        'true': true,
-        'false': false,
-        'undefined': undefined,
-      }
+        true: true,
+        false: false,
+        undefined: undefined,
+      },
     },
     loading: {
       control: {
-        type: 'boolean'
+        type: "boolean",
       },
       mapping: {
-        'true': true,
-        'false': false,
-        'undefined': undefined,
-      }
+        true: true,
+        false: false,
+        undefined: undefined,
+      },
     },
     children: {
-      type: { name: 'string', required: false },
-      defaultValue: 'Send'
-    }
-  }
+      type: { name: "string", required: false },
+      defaultValue: "Send",
+    },
+  },
 };
 
-export const Default = (props: ButtonProps) => (
-  <Button {...props} />
-);
+export const Default = (props: ButtonProps) => <Button {...props} />;

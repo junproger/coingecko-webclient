@@ -1,16 +1,14 @@
-import React from 'react';
+import React from "react";
 
 import { WithLoaderProps } from "./propsWithLoader";
-import { WithLoader } from './WithLoader';
+import { WithLoader } from "./WithLoader";
 
 export default {
-  title: 'WithLoader',
+  title: "WithLoader",
   component: WithLoader,
   args: {
-    children: ''
-  }
+    children: "",
+  },
 };
 
-export const Default = (props: WithLoaderProps) => (
-  <WithLoader {...props} />
-);
+export const Default = (props: WithLoaderProps) => <WithLoader {...props} />;
