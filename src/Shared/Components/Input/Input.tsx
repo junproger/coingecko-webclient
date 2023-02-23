@@ -3,7 +3,7 @@ import React, { ChangeEvent } from "react";
 import classNames from "classnames";
 
 import { InputProps } from "./propsInput";
-import "./styleInput.scss";
+import styleInput from "./styleInput.module.scss";
 
 export const Input: React.FC<InputProps> = ({
   value = "",
@@ -14,8 +14,8 @@ export const Input: React.FC<InputProps> = ({
   ...attrib
 }) => {
   const inputClasses = classNames(
-    "input",
-    { input_disabled: disabled },
+    styleInput.input,
+    { [styleInput.input_disabled]: disabled },
     className
   );
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
