@@ -1,10 +1,5 @@
 @import "@Assets/CircularStd/styleFonts.scss";
-
-:root {
-  --bg-market-light: #F8F9FA;
-  --bg-coins-light: #FFFFFF;
-	--font-color-light: #000000;
-}
+@import "./styleRoot.scss";
 
 html,
 body {
@@ -24,11 +19,14 @@ body {
 
 html,
 body {
+	margin: 0;
 	scroll-behavior: smooth;
-	font-family: "Circular Std";
+	font-family: "Circular Std", sans-serif;
   font-weight: normal;
   font-style: normal;
 	font-size: 16px;
-	background-color: var(--bg-coins-light);
-	color: var(--font-color-light);
+	background-color: $bg-coins-light;
+	color: $font-color-light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
