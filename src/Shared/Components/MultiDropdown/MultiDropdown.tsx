@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { MultiDropdownProps, Option } from "./propsMultiDropdown";
-import "./styleMultiDropdown.scss";
+import styleMultiDropdown from "./styleMultiDropdown.module.scss";
 
 export const MultiDropdown: React.FC<MultiDropdownProps> = ({
   tabIndex = 1,
@@ -20,8 +20,8 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
 
   /** Const with classes of the styles MDD */
   const MultiDropdownClasses = classNames(
-    "multi-dropdown",
-    { "multi-dropdown_disabled": disabled },
+    styleMultiDropdown["multi-dropdown"],
+    { [styleMultiDropdown["multi-dropdown_disabled"]]: disabled },
     className
   );
 
@@ -43,18 +43,22 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
     }
   };
 
+  const isItemChoosedClasses: string =
+    `${styleMultiDropdown["multi-dropdown__item"]} ` +
+    styleMultiDropdown["multi-dropdown__item_choosed"];
+
   /** Handler for the selected options MDD */
   return (
     <div className={MultiDropdownClasses}>
       <div
         tabIndex={tabIndex}
-        className="multi-dropdown__window"
+        className={styleMultiDropdown["multi-dropdown__window"]}
         onClick={() => setVisible(!getVisible)}
       >
         {pluralizeOptions(value) || placeHolder}
       </div>
       {getVisible && !disabled && (
-        <div className="multi-dropdown__list">
+        <div className={styleMultiDropdown["multi-dropdown__list"]}>
           {options.map((option) => (
             <div
               id={option.key}
@@ -62,8 +66,8 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
               onClick={() => clickHandle(option)}
               className={
                 isItemChoosed(option)
-                  ? "multi-dropdown__item multi-dropdown__item_choosed"
-                  : "multi-dropdown__item"
+                  ? isItemChoosedClasses
+                  : `${styleMultiDropdown["multi-dropdown__item"]}`
               }
             >
               {option.value}
