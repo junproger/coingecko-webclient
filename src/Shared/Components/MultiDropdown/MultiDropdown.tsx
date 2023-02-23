@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import classNames from "classnames";
-
-import "@Styles/styleIndex.scss";
 import "./styleMultiDropdown.scss";
 
 export interface Option {

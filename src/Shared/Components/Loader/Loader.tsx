@@ -1,8 +1,6 @@
 import React from "react";
 
 import classNames from "classnames";
-
-import "@Styles/styleIndex.scss";
 import "./styleLoader.scss";
 
 export enum LoaderSize {

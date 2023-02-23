@@ -3,7 +3,6 @@ import React, { ReactNode, ButtonHTMLAttributes } from "react";
 import { Loader, LoaderSize } from "@Components/Loader";
 import classNames from "classnames";
 
-import "@Styles/styleIndex.scss";
 import "./styleButton.scss";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

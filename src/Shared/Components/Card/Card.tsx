@@ -1,6 +1,5 @@
 import React, { ReactNode, MouseEventHandler } from "react";
 
-import "@Styles/styleIndex.scss";
 import "./styleCard.scss";
 
 export interface CardProps {

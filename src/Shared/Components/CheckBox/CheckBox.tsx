@@ -1,8 +1,6 @@
 import React, { ChangeEvent, InputHTMLAttributes } from "react";
 
 import classNames from "classnames";
-
-import "@Styles/styleIndex.scss";
 import "./styleCheckBox.scss";
 
 export interface CheckBoxProps
