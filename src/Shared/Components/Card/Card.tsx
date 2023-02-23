@@ -1,15 +1,8 @@
-import React, { ReactNode, MouseEventHandler } from "react";
+import React from "react";
+
+import { CardProps } from "./propsCard";
 
 import "./styleCard.scss";
-
-export interface CardProps {
-  alt?: string;
-  image: string;
-  title: ReactNode;
-  subtitle: ReactNode;
-  content?: ReactNode;
-  onClick?: MouseEventHandler;
-}
 
 export const Card: React.FC<CardProps> = ({
   alt = "",

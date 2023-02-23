@@ -1,5 +1,7 @@
 import React from 'react';
-import { Card, CardProps } from './Card';
+
+import { Card } from './Card';
+import { CardProps } from "./propsCard";
 
 export default {
   title: 'Card',
