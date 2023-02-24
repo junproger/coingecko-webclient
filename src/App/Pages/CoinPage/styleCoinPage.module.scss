@@ -1,0 +1,10 @@
+@import "@Styles/styleRoot.scss";
+
+.coinpage {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  display: block;
+  background-color: $bg-primary;
+  color: $text-primary;
+}
