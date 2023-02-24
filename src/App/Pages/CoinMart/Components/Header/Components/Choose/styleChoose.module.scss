@@ -1,0 +1,11 @@
+@import "@Styles/styleRoot.scss";
+
+.choose {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
