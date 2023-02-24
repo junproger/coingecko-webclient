@@ -2,5 +2,23 @@
 @import "@Styles/styleMixin.scss";
 
 .navigate {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  min-height: 22px;
   @include flexbox;
+  gap: 10px;
+  font-family: 'Circular Std';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: $text-tertiary;
+
+  &__arrows {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+  }
+
 }
