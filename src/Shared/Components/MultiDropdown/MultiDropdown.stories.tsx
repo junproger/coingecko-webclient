@@ -1,5 +1,7 @@
 import React from "react";
 
+import "@Styles/styleIndex.scss";
+
 import { MultiDropdown } from "./MultiDropdown";
 import { MultiDropdownProps, Option } from "./propsMultiDropdown";
 

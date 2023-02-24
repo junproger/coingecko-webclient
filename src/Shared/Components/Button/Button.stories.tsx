@@ -1,5 +1,7 @@
 import React from "react";
 
+import "@Styles/styleIndex.scss";
+
 import { Button } from "./Button";
 import { ButtonProps } from "./propsButton";
 

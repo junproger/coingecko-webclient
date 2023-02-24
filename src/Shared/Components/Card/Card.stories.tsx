@@ -1,5 +1,7 @@
 import React from "react";
 
+import "@Styles/styleIndex.scss";
+
 import { Card } from "./Card";
 import { CardProps } from "./propsCard";
 

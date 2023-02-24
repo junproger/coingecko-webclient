@@ -1,5 +1,7 @@
 import React from "react";
 
+import "@Styles/styleIndex.scss";
+
 import { CheckBox } from "./CheckBox";
 import { CheckBoxProps } from "./propsCheckBox";
 
