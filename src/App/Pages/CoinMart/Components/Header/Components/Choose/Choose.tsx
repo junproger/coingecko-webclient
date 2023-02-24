@@ -16,7 +16,7 @@ const Choose: React.FC = () => {
   ];
 
   const pluralizeOptions = (elements: Option[]) =>
-    elements.map((elm: Option) => elm.key).join();
+    elements.map((elm: Option) => elm.value).join();
 
   const [value, setValue] = React.useState<Option[]>([]);
 
