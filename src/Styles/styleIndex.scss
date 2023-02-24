@@ -2,7 +2,8 @@
 @import "./styleRoot.scss";
 
 html,
-body {
+body,
+.root {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: inherit;
@@ -18,7 +19,8 @@ body {
 }
 
 html,
-body {
+body,
+.root {
 	margin: 0;
 	scroll-behavior: smooth;
 	font-family: "Circular Std", sans-serif;
