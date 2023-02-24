@@ -5,7 +5,7 @@ import styleApp from "./styleApp.module.scss";
 
 const App: React.FC = () => {
   return (
-    <div className={styleApp.app}>
+    <div className={styleApp.appframe}>
       <CoinMart />
     </div>
   );

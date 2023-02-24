@@ -1,11 +1,7 @@
-@import "@Styles/styleRoot.scss";
-
-.app {
+.appframe {
   width: 100%;
   max-width: 375px;
   height: auto;
   margin: 0 auto;
   display: block;
-  background-color: $bg-secondary;
-  gap: 20px;
 }
