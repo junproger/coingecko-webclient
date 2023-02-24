@@ -7,9 +7,12 @@ import styleChoose from "./styleChoose.module.scss";
 
 const Choose: React.FC = () => {
   const options: Option[] = [
-    { key: "msk", value: "Москва" },
-    { key: "spb", value: "Санкт-Петербург" },
-    { key: "ekb", value: "Екатеринбург" },
+    { key: "msk", value: "Moscow" },
+    { key: "nnv", value: "Nizhny Novgorod" },
+    { key: "rnd", value: "Rostov-na-Donu" },
+    { key: "spb", value: "Saint-Petersburg" },
+    { key: "vvk", value: "Vladivostok" },
+    { key: "ekb", value: "Yekaterinburg" },
   ];
 
   const pluralizeOptions = (elements: Option[]) =>
@@ -19,7 +22,7 @@ const Choose: React.FC = () => {
 
   return (
     <div className={styleChoose.choose}>
-      <LogoType children="Coins" />
+      <LogoType children="Coinmart" />
       <MultiDropdown
         tabIndex={1}
         value={value}
