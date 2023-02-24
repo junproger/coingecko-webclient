@@ -1,13 +1,11 @@
 @import "@Styles/styleRoot.scss";
 
 .app {
-  width: 400px;
+  width: 100%;
+  max-width: 375px;
+  height: auto;
   margin: 0 auto;
-  padding-top: 10px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background-color: $bg-market-light;
   gap: 20px;
 }
