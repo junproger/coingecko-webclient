@@ -6,11 +6,21 @@
   border-style: solid;
   border-color: #6C757D;
   border-right-color: transparent;
-  -webkit-transform: rotate(35deg);
-  -moz-transform: rotate(35deg);
-  -ms-transform: rotate(35deg);
-  -o-transform: rotate(35deg);
-  transform: rotate(35deg);
+  -webkit-animation: spiner 2s linear infinite;
+    -moz-animation: spiner 2s linear infinite;
+        animation: spiner 2s linear infinite;
+
+  @-webkit-keyframes spiner {
+    to { -webkit-transform: rotate(360deg); }
+  }
+
+  @-moz-keyframes spiner {
+    to { -moz-transform: rotate(360deg); }
+  }
+
+  @keyframes spiner {
+    to { transform: rotate(360deg); }
+  }
 
   &_size-l {
     width: 60px;
