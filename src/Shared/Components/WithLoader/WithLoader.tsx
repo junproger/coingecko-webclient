@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Loader } from "@Components/Loader";
+import { Loader, LoaderSize } from "@Components/Loader";
 import classNames from "classnames";
 
 import { WithLoaderProps } from "./propsWithLoader";
@@ -18,7 +18,12 @@ export const WithLoader: React.FC<WithLoaderProps> = ({
   return (
     <div className={withLoaderClasses}>
       {children}
-      {loading && <Loader className={styleWithLoader["with-loader__loader"]} />}
+      {loading && (
+        <Loader
+          size={LoaderSize.m}
+          className={styleWithLoader["with-loader__loader"]}
+        />
+      )}
     </div>
   );
 };
