@@ -9,4 +9,4 @@ Web-client for CoinGecko API in ReactJS.
 3. Cra-setup (Default App setup): if you start this branch, you can see a sample component. 
 4. Components (With components of App): if you start this branch, you can see the app's components. 
 5. Storybook (With Storybook for App): if you start this branch, you can see the app's storybook. 
-6. Cra-markup (Markup pages of App (HW-3))
+6. Cra-markup (Markup of pages App's (HW-3)): markup of pages of the app's layout according HW-3. 
