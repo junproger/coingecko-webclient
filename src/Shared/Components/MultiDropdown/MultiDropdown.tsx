@@ -55,7 +55,11 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
         className={styleMultiDropdown["multi-dropdown__window"]}
         onClick={() => setVisible(!getVisible)}
       >
-        {pluralizeOptions(value) || placeHolder}
+        {pluralizeOptions(value) || (
+          <span className={styleMultiDropdown["multi-dropdown__window_holder"]}>
+            {placeHolder}
+          </span>
+        )}
       </div>
       {getVisible && !disabled && (
         <div className={styleMultiDropdown["multi-dropdown__list"]}>
