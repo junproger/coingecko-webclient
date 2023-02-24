@@ -1,11 +1,6 @@
 @import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
 
 .navigate {
-  width: 100%;
-  max-width: 375px;
-  height: auto;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
+  @include flexbox;
 }
