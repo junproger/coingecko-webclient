@@ -2,6 +2,6 @@
 @import "@Styles/styleMixin.scss";
 
 .choose {
-  @include flexbox;
+  @include flexrows;
   margin-bottom: 24px;
 }

@@ -5,7 +5,7 @@
   width: 100%;
   max-width: 375px;
   height: 22px;
-  @include flexbox;
+  @include flexrows;
   gap: 10px;
   font-family: 'Circular Std';
   font-style: normal;
