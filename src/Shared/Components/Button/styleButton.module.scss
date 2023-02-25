@@ -1,7 +1,7 @@
 .button {
   width: auto;
-  height: 34px;
-  padding: 8px;
+  height: 40px;
+  padding: 10px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -16,10 +16,6 @@
   line-height: 18px;
   color: #343A40;
   border: none;
-
-  &:focus {
-    opacity: 0.5;
-  }
 
   &:hover {
     cursor: pointer;
