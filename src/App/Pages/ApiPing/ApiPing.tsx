@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Loader } from "@Components/Loader";
+import { loging } from "@Utils/loging";
 import axios from "axios";
 
 import styleApiPing from "./styleApiPing.module.scss";
@@ -17,11 +18,15 @@ const ApiPing: React.FC = () => {
 
   useEffect(() => {
     const fetchPingData = async () => {
-      const result = await axios({
-        method: "get",
-        url: urlApiV3Ping,
-      });
-      setPingStatus(result.data);
+      try {
+        const result = await axios({
+          method: "get",
+          url: urlApiV3Ping,
+        });
+        setPingStatus(result.data);
+      } catch (err) {
+        loging(err);
+      }
     };
     fetchPingData();
   }, []);
