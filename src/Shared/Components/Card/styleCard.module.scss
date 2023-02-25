@@ -65,13 +65,23 @@
   &__content {
     width: auto;
     height: 40px;
+    margin-left: auto;
     overflow: hidden;
     font-family: "Circular Std";
     font-style: normal;
     font-weight: 450;
     font-size: 16px;
     line-height: 20px;
+    text-align: right;
     color: #343A40;
+  }
+
+  &__content > div + div {
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 15px;
   }
 
 }
