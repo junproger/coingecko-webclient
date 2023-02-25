@@ -1,11 +1,12 @@
 @import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
 
 .main {
   width: 100%;
   max-width: 375px;
   height: auto;
-  display: block;
   padding: 16px;
+  @include flexcols;
   background-color: $bg-secondary;
   color: $text-secondary;
 }
