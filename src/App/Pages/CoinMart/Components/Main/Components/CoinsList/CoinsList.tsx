@@ -2,14 +2,14 @@ import React from "react";
 
 import CoinItem from "../CoinItem";
 
-const CoinList: React.FC = () => {
+const CoinsList: React.FC = () => {
   return (
-    <ul>
+    <div>
       <CoinItem />
       <CoinItem />
       <CoinItem />
-    </ul>
+    </div>
   );
 };
 
-export default CoinList;
+export default CoinsList;
