@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<CoinMart />} />
         <Route path="coins" element={<CoinPage />} />
-        <Route path="coins/:id" element={<CoinPage />} />
+        <Route path="coins/:idcoin" element={<CoinPage />} />
         <Route path="ping" element={<ApiPing />} />
         <Route path="*" element={<Error />} />
       </Routes>
