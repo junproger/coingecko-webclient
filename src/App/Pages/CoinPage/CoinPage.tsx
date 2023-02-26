@@ -11,11 +11,12 @@ import styleCoinPage from "./styleCoinPage.module.scss";
 const CoinPage: React.FC = () => {
   const { idcoin } = useParams<{ idcoin: string }>();
 
-  const CoinInfo = useFetchCoinInfo(idcoin);
+  const dataCoinInfo = useFetchCoinInfo(idcoin);
+
   return (
     <div className={styleCoinPage.coinpage}>
-      <Header coininfodata={CoinInfo} />
-      <Main description={CoinInfo?.description.en || ""} />
+      <Header coininfodata={dataCoinInfo} />
+      <Main description={dataCoinInfo?.description.en || ""} />
       <Footer />
     </div>
   );
