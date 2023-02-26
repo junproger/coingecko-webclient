@@ -8,7 +8,7 @@
   min-height: 24px;
   @include flexrows;
   gap: 12px;
-  padding: 16px;
+  margin-bottom: 16px;
 
   &__link {
     width: 10px;
