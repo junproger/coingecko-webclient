@@ -1,3 +1,5 @@
+@import "@Styles/styleRoot.scss";
+
 .card {
   width: 100%;
   max-width: 343px;
@@ -8,7 +10,7 @@
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  background-color: #FFFFFF;
+  background-color: $bg-primary;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
   border-radius: 8px;
   padding: 16px;
@@ -47,7 +49,7 @@
     font-size: 16px;
     line-height: 20px;
     margin: 0;
-    color: #212529;
+    color: $text-primary;
   }
 
   &__titles_subtitle {
@@ -59,7 +61,7 @@
     font-size: 12px;
     line-height: 15px;
     margin: 0;
-    color: #6C757D;
+    color: $text-tertiary;
   }
 
   &__content {
@@ -73,7 +75,15 @@
     font-size: 16px;
     line-height: 20px;
     text-align: right;
-    color: #343A40;
+    color: $text-secondary;
+
+    &_up {
+      color: $color-green;
+    }
+
+    &_down {
+      color: $color_red;
+    }
   }
 
   &__content > div + div {
