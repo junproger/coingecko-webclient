@@ -19,7 +19,8 @@
   &__coins {
     height: 24px;
     @include flexrows;
-    gap: 8px;
+    align-items: center;
+    gap: 4px;
 
     &_icon {
       width: 24px;
@@ -49,6 +50,11 @@
       color: $text-tertiary;
     }
 
+  }
+
+  &__star {
+    width: 17px;
+    height: 15px;
   }
 
 }
