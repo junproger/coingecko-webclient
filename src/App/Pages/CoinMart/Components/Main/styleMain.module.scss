@@ -7,6 +7,7 @@
   height: auto;
   padding: 16px;
   @include flexcols;
+  gap: 10px;
   background-color: $bg-secondary;
   color: $text-secondary;
 }

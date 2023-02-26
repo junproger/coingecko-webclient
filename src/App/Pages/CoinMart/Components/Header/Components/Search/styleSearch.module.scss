@@ -2,6 +2,10 @@
 @import "@Styles/styleMixin.scss";
 
 .search {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
   @include flexrows;
+  justify-content: space-between;
   margin-bottom: 18px;
 }

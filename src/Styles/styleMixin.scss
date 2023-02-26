@@ -1,20 +1,11 @@
 @mixin flexrows {
-  width: 100%;
-  max-width: 375px;
-  height: auto;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-between;
 }
 
 @mixin flexcols {
-  width: 100%;
-  max-width: 375px;
-  height: auto;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  justify-content: flex-start;
-  gap: 10px;
 }

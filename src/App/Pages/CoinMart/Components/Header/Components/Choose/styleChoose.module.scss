@@ -2,6 +2,10 @@
 @import "@Styles/styleMixin.scss";
 
 .choose {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
   @include flexrows;
+  justify-content: space-between;
   margin-bottom: 24px;
 }
