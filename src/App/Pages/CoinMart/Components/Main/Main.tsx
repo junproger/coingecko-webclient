@@ -2,14 +2,16 @@ import React from "react";
 
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
-import { useFetchCoinMart } from "@Hooks/useFetchCoinMart";
 import { Link } from "react-router-dom";
+import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
 
 import styleMain from "./styleMain.module.scss";
 
-const Main: React.FC = () => {
-  const CoinMart = useFetchCoinMart();
+interface ICoinMartData {
+  coinmartdata: ICoinsMarketApiNorm[];
+}
 
+const Main: React.FC<ICoinMartData> = ({ coinmartdata }) => {
   const selectColor = (param: number) => {
     if (param >= 0) {
       return "#21BF73";
@@ -20,8 +22,8 @@ const Main: React.FC = () => {
 
   return (
     <main className={styleMain.main}>
-      {CoinMart[0] ? (
-        CoinMart.map((coins) => (
+      {coinmartdata[0] ? (
+        coinmartdata.map((coins) => (
           <Link id={coins.id} key={coins.id} to={`/coins/${coins.id}`}>
             <Card
               alt={coins.id}
