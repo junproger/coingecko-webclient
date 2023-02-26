@@ -44,7 +44,7 @@ const Main: React.FC = () => {
           </Link>
         ))
       ) : (
-        <WithLoader loading={true} children={<div>Coinmart loading...</div>} />
+        <WithLoader loading={true} children={<div>Content loading...</div>} />
       )}
     </main>
   );
