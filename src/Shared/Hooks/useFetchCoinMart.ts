@@ -4,9 +4,8 @@ import { loging } from "@Utils/loging";
 import axios from "axios";
 import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
 
-export const useFetchCoinMart = () => {
-  const urlCoinMart: string =
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10&page=1";
+export const useFetchCoinMart = (defaultQuery: string) => {
+  const urlCoinMart: string = defaultQuery;
 
   const [getCoinMart, setCoinMart] = useState<ICoinsMarketApiNorm[]>([]);
 
@@ -35,7 +34,7 @@ export const useFetchCoinMart = () => {
       }
     };
     fetchCoinMartData();
-  }, []);
+  }, [urlCoinMart]);
 
   return getCoinMart;
 };
