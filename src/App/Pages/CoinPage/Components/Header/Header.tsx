@@ -9,7 +9,7 @@ const Header: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   return (
     <header>
       <Titles coininfodata={coininfodata} />
-      <Prices />
+      <Prices coininfodata={coininfodata} />
       <Refers />
     </header>
   );
