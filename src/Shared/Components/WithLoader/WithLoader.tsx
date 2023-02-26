@@ -20,7 +20,7 @@ export const WithLoader: React.FC<WithLoaderProps> = ({
       {children}
       {loading && (
         <Loader
-          size={LoaderSize.m}
+          size={LoaderSize.l}
           className={styleWithLoader["with-loader__loader"]}
         />
       )}
