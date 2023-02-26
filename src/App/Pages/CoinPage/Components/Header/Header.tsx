@@ -3,11 +3,12 @@ import React from "react";
 import Prices from "./Components/Prices";
 import Refers from "./Components/Refers";
 import Titles from "./Components/Titles";
+import { ICoinInfoData } from "./Interfaces/ICoinInfoData";
 
-const Header: React.FC = () => {
+const Header: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   return (
     <header>
-      <Titles />
+      <Titles coininfodata={coininfodata} />
       <Prices />
       <Refers />
     </header>
