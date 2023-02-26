@@ -21,6 +21,7 @@ module.exports = {
       "@Components": path.resolve(__dirname, "../", "src/Shared/Components"),
       "@Configs": path.resolve(__dirname, "../", "src/Configs"),
       "@Hooks": path.resolve(__dirname, "../", "src/Shared/Hooks"),
+      "@Queries": path.resolve(__dirname, "../", "src/Shared/Queries"),
       "@Styles": path.resolve(__dirname, "../", "src/Styles"),
       "@Utils": path.resolve(__dirname, "../", "src/Utils"),
     };
