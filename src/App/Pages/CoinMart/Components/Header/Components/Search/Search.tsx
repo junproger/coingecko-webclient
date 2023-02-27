@@ -2,14 +2,33 @@ import React, { useState } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
+import { loging } from "@Utils/loging";
 
 import styleSearch from "./styleSearch.module.scss";
+import { ICoinMartQuery } from "../../Interfaces/ICoinMartQuery";
 
-const Search: React.FC = () => {
+const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
   const [value, setValue] = useState<string>("");
 
   const handleChange = (value: string): void => {
     setValue(value);
+  };
+
+  const setupQuerySearch = (value: string) => {
+    const hook = "search";
+    const control = null;
+    const handler = null;
+    const queries = value;
+    const request = "https://api.coingecko.com/api/v3/search?query=";
+    const apidata = null;
+    loging({
+      hook: hook,
+      control: control,
+      handler: handler,
+      query: queries,
+      request: request,
+      apidata: apidata,
+    });
   };
 
   return (
@@ -19,7 +38,7 @@ const Search: React.FC = () => {
         placeholder="Search Cryptocurrency"
         onChange={handleChange}
       />
-      <Button loading={false}>
+      <Button loading={false} onClick={() => setupQuerySearch(value)}>
         <svg
           width="20"
           height="20"
