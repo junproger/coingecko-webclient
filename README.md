@@ -12,3 +12,4 @@ Web-client for CoinGecko API in ReactJS.
 6. Cra-markup (Markup of pages App's (HW-3)): markup of pages of the app's layout according HW-3.
 7. Cra-pattern (Choose of Design Patterns): Model-View-Controller or Model-View-Presenter.
 8. Cra-states (Working with State Managers): default CRA state managment and MobX state manager.
+
