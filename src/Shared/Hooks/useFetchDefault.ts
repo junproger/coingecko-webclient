@@ -4,20 +4,20 @@ import { loging } from "@Utils/loging";
 import axios from "axios";
 import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
 
-export const useFetchCoinMart = (defaultQuery: string) => {
+export const useFetchDefault = (defaultQuery: string) => {
   const urlCoinMart: string = defaultQuery;
 
   const [getCoinMart, setCoinMart] = useState<ICoinsMarketApiNorm[]>([]);
 
   useEffect(() => {
-    const fetchCoinMartData = async () => {
+    const fetchDefaultData = async () => {
       try {
         const result = await axios({
           method: "get",
           url: urlCoinMart,
         });
         setCoinMart(
-          result.data.map((dump: ICoinsMarketApiNorm) => ({
+          await result.data.map((dump: ICoinsMarketApiNorm) => ({
             id: dump.id,
             symbol: dump.symbol,
             name: dump.name,
@@ -33,7 +33,7 @@ export const useFetchCoinMart = (defaultQuery: string) => {
         loging(err);
       }
     };
-    fetchCoinMartData();
+    fetchDefaultData();
   }, [urlCoinMart]);
 
   return getCoinMart;
