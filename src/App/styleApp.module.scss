@@ -1,0 +1,11 @@
+@import "@Styles/styleRoot.scss";
+
+.appframe {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+	background-color: $bg-default;
+	color: $text-default;
+}

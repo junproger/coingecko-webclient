@@ -1,0 +1,35 @@
+@import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
+
+.main {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  @include flexcols;
+  margin-bottom: 5px;
+  background-color: $bg-primary;
+  color: $text-primary;
+
+  &__title {
+    width: 85px;
+    height: 20px;
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: $text-tertiary;
+    margin: 8px 0;
+    padding: 0;
+  }
+
+  &__text {
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 18px;
+    color: $text-primary;
+  }
+
+}

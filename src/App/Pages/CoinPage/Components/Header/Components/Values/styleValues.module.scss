@@ -1,0 +1,36 @@
+@import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
+
+.values {
+  width: 100%;
+  max-width: 375px;
+  height: 200px;
+  margin-bottom: 12px;
+
+  &__item {
+    width: 343px;
+    height: 40px;
+    @include flexrows;
+    justify-content: space-between;
+
+    &_title {
+      font-family: 'Circular Std';
+      font-style: normal;
+      font-weight: 450;
+      font-size: 14px;
+      line-height: 18px;
+      color: $text-tertiary;
+    }
+
+    &_value {
+      font-family: 'Circular Std';
+      font-style: normal;
+      font-weight: 450;
+      font-size: 14px;
+      line-height: 18px;
+      color: $text-primary;
+    }
+
+  }
+
+}

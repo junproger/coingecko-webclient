@@ -1,0 +1,10 @@
+@import "@Styles/styleRoot.scss";
+
+.coinmart {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  display: block;
+  background-color: $bg-secondary;
+  color: $text-secondary;
+}

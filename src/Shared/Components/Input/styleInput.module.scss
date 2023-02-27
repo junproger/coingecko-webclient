@@ -1,0 +1,37 @@
+.input {
+  width: 100%;
+  max-width: 294px;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #DFE2E4;
+  border-radius: 4px;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 12px;
+  line-height: 16px;
+  color: #DFE2E4;
+  padding: 12px;
+  outline: none;
+
+  &:focus {
+    border: 1px solid #6C757D;
+    color: #343A40;
+  }
+
+  &:hover {
+    border: 1px solid #6C757D;
+    color: #343A40;
+    cursor: pointer;
+  }
+
+  &:disabled,
+  &_disabled {
+    background-color: transparent;
+    border: 1px solid #DFE2E4;
+    color: #6C757D;
+    cursor: default;
+  }
+
+}

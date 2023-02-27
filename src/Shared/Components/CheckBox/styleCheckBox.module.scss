@@ -1,0 +1,64 @@
+.checkbox {
+  $checkbord: 1px solid #6C757D;
+  $checkmark: 2px solid #6C757D;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  position: relative;
+  width: 27px;
+  height: 27px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  border: 1px solid #DFE2E4;
+  border-radius: 4px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    top: 3px;
+    left: 8px;
+    border-right: $checkmark;
+    border-bottom: $checkmark;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    visibility: hidden;
+  }
+
+  &:checked::before {
+    visibility: visible;
+  }
+
+  &:checked {
+    border: 1px solid #DFE2E4;
+  }
+
+  &:focus {
+    border: $checkbord;
+  }
+
+  &:hover {
+    border: $checkbord;
+    cursor: pointer;
+  }
+
+  &:disabled::before {
+    opacity: 0.7;
+  }
+
+  &:disabled,
+  &_disabled {
+    border: 1px solid #DFE2E4;
+    opacity: 0.7;
+  }
+  
+}

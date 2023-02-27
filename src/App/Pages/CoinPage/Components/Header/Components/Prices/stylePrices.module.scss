@@ -1,0 +1,43 @@
+@import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
+
+.prices {
+  width: 100%;
+  max-width: 375px;
+  height: 30px;
+  @include flexrows;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  &__current {
+    width: 121px;
+    height: 30px;
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: $text-primary;
+  }
+
+  &__changes {
+    width: 132px;
+    height: 20px;
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 20px;
+
+    &_up {
+      color: $color-green;
+    }
+
+    &_down {
+      color: $color_red;
+    }
+
+  }
+
+}

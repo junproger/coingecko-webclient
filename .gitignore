@@ -3,6 +3,10 @@
 # vscode setup
 /.vscode
 
+# storybook
+/storybook-static
+storybook-static
+
 # dependencies
 /node_modules
 /.pnp
