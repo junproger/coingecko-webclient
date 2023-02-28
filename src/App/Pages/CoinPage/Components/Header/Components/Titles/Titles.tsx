@@ -4,7 +4,7 @@ import { Loader, LoaderSize } from "@Components/Loader";
 import { Link } from "react-router-dom";
 
 import styleTitles from "./styleTitles.module.scss";
-import { ICoinInfoData } from "../../Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   return (

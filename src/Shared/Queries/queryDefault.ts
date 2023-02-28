@@ -1,4 +1,4 @@
-import { IQueryDefault } from "src/Interfaces/IQueryDefault";
+import { IQueryDefault } from "@Interfaces/IQueryDefault";
 
 export const queryDefault: IQueryDefault = {
   api: "coins",

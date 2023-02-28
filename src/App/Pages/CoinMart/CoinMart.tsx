@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { useFetchDefault } from "@Hooks/useFetchDefault";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
+import { IQueryDefault } from "@Interfaces/IQueryDefault";
 import { queryDefault } from "@Queries/queryDefault";
-import { IQueryDefault } from "src/Interfaces/IQueryDefault";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";

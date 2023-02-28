@@ -1,7 +1,7 @@
 import React from "react";
 
 import styleValues from "./styleValues.module.scss";
-import { ICoinInfoData } from "../../Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Values: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   const market_cap = coininfodata?.market_data.market_cap.usd;

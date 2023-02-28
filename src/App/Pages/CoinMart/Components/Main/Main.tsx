@@ -3,9 +3,9 @@ import React from "react";
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
 import { currencySymbols } from "@Configs/currencySymbols";
+import { ICoinsMarketApiNorm } from "@Interfaces/ICoinsMarketApiNorm";
+import { ISearchCoinsApiNorm } from "@Interfaces/ISearchCoinsApiNorm";
 import { Link } from "react-router-dom";
-import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
-import { ISearchCoinsApiNorm } from "src/Interfaces/ISearchCoinsApiNorm";
 
 import styleMain from "./styleMain.module.scss";
 

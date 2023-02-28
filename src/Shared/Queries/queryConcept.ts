@@ -1,4 +1,4 @@
-import { IQueryConcept } from "src/Interfaces/IQueryConcept";
+import { IQueryConcept } from "@Interfaces/IQueryConcept";
 
 export const queryConcept: IQueryConcept = {
   uipath: "/",

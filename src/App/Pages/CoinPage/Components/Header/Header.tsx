@@ -3,7 +3,7 @@ import React from "react";
 import Prices from "./Components/Prices";
 import Titles from "./Components/Titles";
 import Values from "./Components/Values";
-import { ICoinInfoData } from "./Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "./Interface/ICoinInfoData";
 import styleHeader from "./styleHeader.module.scss";
 
 const Header: React.FC<ICoinInfoData> = ({ coininfodata }) => {

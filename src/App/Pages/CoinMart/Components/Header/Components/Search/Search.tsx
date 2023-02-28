@@ -4,7 +4,7 @@ import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
 
 import styleSearch from "./styleSearch.module.scss";
-import { ICoinMartQuery } from "../../Interfaces/ICoinMartQuery";
+import { ICoinMartQuery } from "../../Interface/ICoinMartQuery";
 
 const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
   const [value, setValue] = useState<string>("");

@@ -9,8 +9,9 @@ const Navigate: React.FC = () => {
       <span>Gainer</span>
       <span>Loser</span>
       <div className={styleNavigate.navigate__arrows}>
-        <span>&lt; Prev</span>
-        <span>Next &gt;</span>
+        <span>&lt; prev</span>
+        <span>&lt; 1 &gt;</span>
+        <span>next &gt;</span>
       </div>
     </nav>
   );

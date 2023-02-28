@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { IQueryDefault } from "@Interfaces/IQueryDefault";
+import { ISearchCoinsApiNorm } from "@Interfaces/ISearchCoinsApiNorm";
 import { loging } from "@Utils/loging";
 import axios from "axios";
-import { IQueryDefault } from "src/Interfaces/IQueryDefault";
-import { ISearchCoinsApiNorm } from "src/Interfaces/ISearchCoinsApiNorm";
 
 export const useFetchSearch = (defaultQuery: IQueryDefault) => {
   const urlCoinMart: IQueryDefault = defaultQuery;

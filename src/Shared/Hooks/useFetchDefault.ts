@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { ICoinsMarketApiNorm } from "@Interfaces/ICoinsMarketApiNorm";
+import { IQueryDefault } from "@Interfaces/IQueryDefault";
 import { loging } from "@Utils/loging";
 import axios from "axios";
-import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
-import { IQueryDefault } from "src/Interfaces/IQueryDefault";
 
 export const useFetchDefault = (defaultQuery: IQueryDefault) => {
   const urlCoinMart: IQueryDefault = defaultQuery;

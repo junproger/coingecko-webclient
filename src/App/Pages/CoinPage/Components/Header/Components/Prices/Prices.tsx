@@ -3,7 +3,7 @@ import React from "react";
 import { Loader, LoaderSize } from "@Components/Loader";
 
 import stylePrices from "./stylePrices.module.scss";
-import { ICoinInfoData } from "../../Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Prices: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   const current_price = coininfodata?.market_data.current_price.usd;

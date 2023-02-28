@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { ICoinsInformApiNorm } from "@Interfaces/ICoinsInformApiNorm";
 import { loging } from "@Utils/loging";
 import axios from "axios";
-import { ICoinsInformApiNorm } from "src/Interfaces/ICoinsInformApiNorm";
 
 export const useFetchCoinInfo = (idcoin: string | undefined) => {
   const urlCoinInfo = `https://api.coingecko.com/api/v3/coins/${idcoin}`;
