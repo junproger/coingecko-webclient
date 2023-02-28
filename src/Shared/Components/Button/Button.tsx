@@ -17,7 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   const buttonClasses = classNames(
     styleButton.button,
     { [styleButton.button_disabled]: loading || disabled },
-    className
+    styleButton[className ? className : ""]
   );
   return (
     <button

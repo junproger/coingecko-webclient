@@ -1,3 +1,5 @@
+@import "@Styles/styleRoot.scss";
+
 .button {
   width: auto;
   height: 40px;
@@ -8,13 +10,13 @@
   justify-content: space-around;
   gap: 6px;
   border-radius: 6px;
-  background-color: #DFE2E4;
+  background-color: $bg-tertiary;
   font-family: "Circular Std";
   font-style: normal;
   font-weight: 450;
   font-size: 14px;
   line-height: 18px;
-  color: #343A40;
+  color: $text-secondary;
   border: none;
 
   &:hover {
@@ -26,6 +28,21 @@
   &_disabled {
     cursor: default;
     opacity: 0.3;
+  }
+
+  &_clear {
+    width: 14px;
+    height: 14px;
+    padding: 4px;
+    top: 3px;
+    right: 53px;
+    border: none;
+    position: absolute;
+    color: $color-red;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    background-color: $bg-transparent;
   }
   
 }
