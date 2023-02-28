@@ -24,6 +24,7 @@ export const useFetchDefault = (defaultQuery: IQueryDefault) => {
             symbol: dump.symbol,
             name: dump.name,
             image: dump.image,
+            currency: urlCoinMart.currency,
             current_price: dump.current_price,
             market_cap: dump.market_cap,
             market_cap_rank: dump.market_cap_rank,
