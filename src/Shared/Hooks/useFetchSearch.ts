@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 
 import { loging } from "@Utils/loging";
 import axios from "axios";
+import { IQueryDefault } from "src/Interfaces/IQueryDefault";
 import { ISearchCoinsApiNorm } from "src/Interfaces/ISearchCoinsApiNorm";
 
-export const useFetchSearch = (defaultQuery: string) => {
-  const urlCoinMart: string = defaultQuery;
+export const useFetchSearch = (defaultQuery: IQueryDefault) => {
+  const urlCoinMart: IQueryDefault = defaultQuery;
 
   const [getSearchCoins, setSearchCoins] = useState<ISearchCoinsApiNorm[]>([]);
 
   useEffect(() => {
+    if (defaultQuery.hook !== "search") return;
     const fetchSearchData = async () => {
       try {
         const result = await axios({
           method: "get",
-          url: urlCoinMart,
+          url: urlCoinMart.request,
         });
         setSearchCoins(
           await result.data.coins.map((dump: ISearchCoinsApiNorm) => ({
@@ -32,7 +34,7 @@ export const useFetchSearch = (defaultQuery: string) => {
       }
     };
     fetchSearchData();
-  }, [urlCoinMart]);
+  }, [defaultQuery.hook, urlCoinMart]);
 
   return getSearchCoins;
 };
