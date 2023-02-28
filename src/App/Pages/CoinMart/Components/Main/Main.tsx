@@ -2,16 +2,23 @@ import React from "react";
 
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
+import { loging } from "@Utils/loging";
 import { Link } from "react-router-dom";
 import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
+import { ISearchCoinsApiNorm } from "src/Interfaces/ISearchCoinsApiNorm";
 
 import styleMain from "./styleMain.module.scss";
 
-interface ICoinMartData {
-  coinmartdata: ICoinsMarketApiNorm[];
+interface ICoinMarketData {
+  coinmarketdata: ICoinsMarketApiNorm[];
+  coinsearchdata: ISearchCoinsApiNorm[];
 }
 
-const Main: React.FC<ICoinMartData> = ({ coinmartdata }) => {
+const Main: React.FC<ICoinMarketData> = ({
+  coinmarketdata,
+  coinsearchdata,
+}) => {
+  loging(coinsearchdata);
   const selectColor = (param: number) => {
     if (param >= 0) {
       return "#21BF73";
@@ -22,8 +29,8 @@ const Main: React.FC<ICoinMartData> = ({ coinmartdata }) => {
 
   return (
     <main className={styleMain.main}>
-      {coinmartdata[0] ? (
-        coinmartdata.map((coins) => (
+      {coinmarketdata[0] ? (
+        coinmarketdata.map((coins) => (
           <Link id={coins.id} key={coins.id} to={`/coins/${coins.id}`}>
             <Card
               alt={coins.id}
