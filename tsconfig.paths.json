@@ -3,9 +3,11 @@
     "baseUrl": ".",
     "paths": {
       "@Assets/*": ["./src/Assets/*"],
+      "@Assistants/*": ["./src/Shared/Assistants/*"],
       "@Components/*": ["./src/Shared/Components/*"],
       "@Configs/*": ["./src/Configs/*"],
       "@Hooks/*": ["./src/Shared/Hooks/*"],
+      "@Interfaces/*": ["./src/Shared/Interfaces/*"],
       "@Queries/*": ["./src/Shared/Queries/*"],
       "@Styles/*": ["./src/Styles/*"],
       "@Utils/*": ["./src/Utils/*"]

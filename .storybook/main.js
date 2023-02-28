@@ -18,9 +18,11 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.alias = {
       "@Assets": path.resolve(__dirname, "../", "src/Assets"),
+      "@Assistants": path.resolve(__dirname, "../", "src/Shared/Assistants"),
       "@Components": path.resolve(__dirname, "../", "src/Shared/Components"),
       "@Configs": path.resolve(__dirname, "../", "src/Configs"),
       "@Hooks": path.resolve(__dirname, "../", "src/Shared/Hooks"),
+      "@Interfaces": path.resolve(__dirname, "../", "src/Shared/Interfaces"),
       "@Queries": path.resolve(__dirname, "../", "src/Shared/Queries"),
       "@Styles": path.resolve(__dirname, "../", "src/Styles"),
       "@Utils": path.resolve(__dirname, "../", "src/Utils"),
