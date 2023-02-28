@@ -5,6 +5,7 @@
   width: 100%;
   max-width: 375px;
   height: auto;
+  position: relative;
   @include flexrows;
   justify-content: space-between;
   margin-bottom: 18px;

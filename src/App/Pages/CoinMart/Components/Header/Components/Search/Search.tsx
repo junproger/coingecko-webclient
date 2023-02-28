@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
-import { loging } from "@Utils/loging";
 
 import styleSearch from "./styleSearch.module.scss";
 import { ICoinMartQuery } from "../../Interfaces/ICoinMartQuery";
@@ -11,23 +10,51 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
   const [value, setValue] = useState<string>("");
 
   const handleChange = (value: string): void => {
-    setValue(value);
+    setValue(value.trim().toLowerCase());
   };
 
-  const setupQuerySearch = (value: string) => {
-    const hook = "search";
-    const control = null;
+  const handlerEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (!value.trim()) return setValue("");
+    if (e.key === "Enter") {
+      return makerQuerySearch(value);
+    }
+    return value;
+  };
+
+  const makerQuerySearch = (value: string) => {
+    if (!value) return;
+    const api = "coins";
+    const hook = "market";
+    const datas = "market";
+    const control = {
+      type: "input",
+      path: "@Components/Input",
+    };
     const handler = null;
-    const queries = value;
-    const request = "https://api.coingecko.com/api/v3/search?query=";
-    const apidata = null;
-    loging({
+    const query = value;
+    const currency = query;
+    const paging = "&per_page=10&page=1";
+    const params = {
+      required: "vs_currency",
+      vs_currency: "usd",
+      per_page: 10,
+      page: 1,
+    };
+    const urlreq =
+      "https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=";
+    const request = `https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=${query}`;
+    coinmartquery({
+      api: api,
       hook: hook,
+      datas: datas,
       control: control,
       handler: handler,
-      query: queries,
+      query: query,
+      currency: currency,
+      paging: paging,
+      params: params,
+      urlreq: urlreq,
       request: request,
-      apidata: apidata,
     });
   };
 
@@ -35,10 +62,20 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
     <div className={styleSearch.search}>
       <Input
         value={value}
-        placeholder="Search Cryptocurrency"
+        placeholder="Search in currency: btc, usd, eur, gbp, jpy ..."
         onChange={handleChange}
+        onKeyDown={handlerEnter}
       />
-      <Button loading={false} onClick={() => setupQuerySearch(value)}>
+      {value && (
+        <Button
+          loading={false}
+          className="button_clear"
+          onClick={() => setValue("")}
+        >
+          x
+        </Button>
+      )}
+      <Button loading={false} onClick={() => makerQuerySearch(value)}>
         <svg
           width="20"
           height="20"
