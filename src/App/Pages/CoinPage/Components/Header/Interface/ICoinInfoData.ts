@@ -1,4 +1,4 @@
-import { ICoinsInformApiNorm } from "src/Interfaces/ICoinsInformApiNorm";
+import { ICoinsInformApiNorm } from "@Interfaces/ICoinsInformApiNorm";
 
 export interface ICoinInfoData {
   coininfodata: ICoinsInformApiNorm | undefined;
