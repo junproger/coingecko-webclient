@@ -14,26 +14,18 @@ const CoinMart: React.FC = () => {
   const [getQuery, setQuery] = useState<IQueryDefault>(queryDefault);
 
   const fetchHUB = {
-    defaultFetch: useFetchDefault(getQuery.request),
-    defaultSearch: useFetchSearch(getQuery.request),
-    defaultChoose: null,
+    defaultFetch: useFetchDefault(getQuery),
+    defaultSearch: useFetchSearch(getQuery),
+    // defaultChoose: null,
   };
-
-  /**  const fetchSWITCH = (getQuery: IQueryDefault) => {
-    switch (getQuery.hook) {
-      case "market":
-        return dataDefault.defaultFetch;
-      case "search":
-        return dataDefault.defaultSearch;
-      default:
-        return dataDefault.defaultFetch;
-    }
-  }; */
 
   return (
     <div className={styleCoinMart.coinmart}>
       <Header coinmartquery={setQuery} />
-      <Main coinmartdata={fetchHUB.defaultFetch} />
+      <Main
+        coinmarketdata={fetchHUB.defaultFetch}
+        coinsearchdata={fetchHUB.defaultSearch}
+      />
       <Footer />
     </div>
   );
