@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
 
@@ -16,46 +17,9 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
   const handlerEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return makerQuerySearch(value);
+      return coinmartquery(makerQuerySearch(value));
     }
     return value;
-  };
-
-  const makerQuerySearch = (value: string) => {
-    if (!value) return;
-    const api = "coins";
-    const hook = "market";
-    const datas = "market";
-    const control = {
-      type: "input",
-      path: "@Components/Input",
-    };
-    const handler = null;
-    const query = value;
-    const currency = query;
-    const paging = "&per_page=10&page=1";
-    const params = {
-      required: "vs_currency",
-      vs_currency: "usd",
-      per_page: 10,
-      page: 1,
-    };
-    const urlreq =
-      "https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=";
-    const request = `https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=${query}`;
-    coinmartquery({
-      api: api,
-      hook: hook,
-      datas: datas,
-      control: control,
-      handler: handler,
-      query: query,
-      currency: currency,
-      paging: paging,
-      params: params,
-      urlreq: urlreq,
-      request: request,
-    });
   };
 
   return (
@@ -75,7 +39,10 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
           x
         </Button>
       )}
-      <Button loading={false} onClick={() => makerQuerySearch(value)}>
+      <Button
+        loading={false}
+        onClick={() => coinmartquery(makerQuerySearch(value))}
+      >
         <svg
           width="20"
           height="20"
