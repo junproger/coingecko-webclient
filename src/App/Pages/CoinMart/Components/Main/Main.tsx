@@ -2,7 +2,7 @@ import React from "react";
 
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
-import { loging } from "@Utils/loging";
+import { currencySymbols } from "@Configs/currencySymbols";
 import { Link } from "react-router-dom";
 import { ICoinsMarketApiNorm } from "src/Interfaces/ICoinsMarketApiNorm";
 import { ISearchCoinsApiNorm } from "src/Interfaces/ISearchCoinsApiNorm";
@@ -18,7 +18,6 @@ const Main: React.FC<ICoinMarketData> = ({
   coinmarketdata,
   coinsearchdata,
 }) => {
-  loging(coinsearchdata);
   const selectColor = (param: number) => {
     if (param >= 0) {
       return "#21BF73";
@@ -39,7 +38,10 @@ const Main: React.FC<ICoinMarketData> = ({
               subtitle={coins.symbol.toUpperCase()}
               content={
                 <>
-                  <div>${coins.current_price}</div>
+                  <div>
+                    {currencySymbols[coins.currency]}
+                    {coins.current_price}
+                  </div>
                   <div
                     style={{
                       color: selectColor(coins.price_change_percentage_24h),
