@@ -15,15 +15,16 @@
   padding: 12px;
   outline: none;
 
-  &:focus {
-    border: 1px solid #6C757D;
-    color: #343A40;
-  }
-
   &:hover {
     border: 1px solid #6C757D;
     color: #343A40;
     cursor: pointer;
+  }
+
+  &:focus {
+    border: 1px solid #6C757D;
+    color: #343A40;
+    cursor: default;
   }
 
   &:disabled,
