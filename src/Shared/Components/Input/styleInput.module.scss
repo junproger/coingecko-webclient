@@ -27,6 +27,11 @@
     cursor: default;
   }
 
+  &_incorrect {
+    background-color: #feebeb;
+    border: 1px solid #f93e3e;
+  }
+
   &:disabled,
   &_disabled {
     background-color: transparent;

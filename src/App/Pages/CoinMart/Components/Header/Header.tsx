@@ -17,7 +17,7 @@ const Header: React.FC<IHeaderWithError> = ({
 }) => {
   return (
     <header className={styleHeader.header}>
-      <Search coinmartquery={coinmartquery} />
+      <Search coinmartquery={coinmartquery} coinmarterror={coinmarterror} />
       <Notice coinmarterror={coinmarterror} />
       <Choose />
       <Navigate />

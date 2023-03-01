@@ -7,7 +7,14 @@ import { Input } from "@Components/Input";
 import styleSearch from "./styleSearch.module.scss";
 import { ICoinMartQuery } from "../../Interface/ICoinMartQuery";
 
-const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
+interface ISearchWithError extends ICoinMartQuery {
+  coinmarterror: string;
+}
+
+const Search: React.FC<ISearchWithError> = ({
+  coinmartquery,
+  coinmarterror,
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [value, setValue] = useState<string>("");
@@ -24,6 +31,11 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
     return value;
   };
 
+  const addclass = {
+    coinmarterror: coinmarterror,
+    addincorrect: coinmarterror && "input_incorrect",
+  };
+
   return (
     <div className={styleSearch.search}>
       <Input
@@ -32,6 +44,7 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
         placeholder="Search in currency: btc, usd, eur, gbp, jpy ..."
         onChange={handleChange}
         onKeyDown={handlerEnter}
+        className={addclass.addincorrect}
       />
       {value && (
         <Button

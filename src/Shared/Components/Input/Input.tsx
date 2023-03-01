@@ -17,7 +17,7 @@ export const Input: React.FC<InputProps> = ({
   const inputClasses = classNames(
     styleInput.input,
     { [styleInput.input_disabled]: disabled },
-    className
+    styleInput[className ? className : ""]
   );
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     return onChange(event.target.value);
