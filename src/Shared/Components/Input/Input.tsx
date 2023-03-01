@@ -6,6 +6,7 @@ import { InputProps } from "./propsInput";
 import styleInput from "./styleInput.module.scss";
 
 export const Input: React.FC<InputProps> = ({
+  inputref,
   value = "",
   placeholder = "",
   onChange,
@@ -25,6 +26,7 @@ export const Input: React.FC<InputProps> = ({
     <input
       type="text"
       value={value}
+      ref={inputref}
       className={inputClasses}
       placeholder={placeholder}
       onChange={inputHandler}

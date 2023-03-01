@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { Button } from "@Components/Button";
@@ -8,6 +8,8 @@ import styleSearch from "./styleSearch.module.scss";
 import { ICoinMartQuery } from "../../Interface/ICoinMartQuery";
 
 const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const [value, setValue] = useState<string>("");
 
   const handleChange = (value: string): void => {
@@ -26,6 +28,7 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
     <div className={styleSearch.search}>
       <Input
         value={value}
+        inputref={inputRef}
         placeholder="Search in currency: btc, usd, eur, gbp, jpy ..."
         onChange={handleChange}
         onKeyDown={handlerEnter}
@@ -34,14 +37,20 @@ const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
         <Button
           loading={false}
           className="button_clear"
-          onClick={() => setValue("")}
+          onClick={() => {
+            setValue("");
+            inputRef.current && inputRef.current.focus();
+          }}
         >
-          x
+          clear
         </Button>
       )}
       <Button
         loading={false}
-        onClick={() => coinmartquery(makerQuerySearch(value))}
+        onClick={() => {
+          coinmartquery(makerQuerySearch(value));
+          if (inputRef.current) inputRef.current.focus();
+        }}
       >
         <svg
           width="20"
