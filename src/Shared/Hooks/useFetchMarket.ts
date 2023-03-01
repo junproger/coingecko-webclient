@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-import { IAPIDATASearch } from "@Interfaces/IAPIDATASearch";
-import { IMAINDATASearch } from "@Interfaces/IMAINDATASearch";
+import { IAPIDATAMarket } from "@Interfaces/IAPIDATAMarket";
+import { IMAINDATAMarket } from "@Interfaces/IMAINDATAMarket";
 import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 import { loging } from "@Utils/loging";
 import axios, { AxiosError, isAxiosError } from "axios";
 
-export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
+export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   const dataScheme = defaultQuery.scheme;
   const urlCoinMart: string = defaultQuery.scheme.request;
 
-  const [getSearchCoins, setSearchCoins] = useState<IMAINDATASearch>({
+  const [getMarketCoins, setMartketCoins] = useState<IMAINDATAMarket>({
     paging: 0,
     errors: "",
     queries: "",
@@ -18,27 +18,29 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
   });
 
   useEffect(() => {
-    if (dataScheme.hook !== "search") return;
-    const fetchSearchData = async () => {
+    if (dataScheme.hook !== "market") return;
+    const fetchDefaultData = async () => {
       try {
         const result = await axios({
           method: "get",
           url: urlCoinMart,
         });
-        setSearchCoins({
+        setMartketCoins({
           paging: 1,
           errors: dataScheme.errors,
           queries: dataScheme.queries,
-          results: result.data.coins.map((dump: IAPIDATASearch) => ({
+          results: result.data.map((dump: IAPIDATAMarket) => ({
             id: dump.id,
-            name: dump.name,
-            api_symbol: dump.api_symbol,
             symbol: dump.symbol,
+            name: dump.name,
+            image: dump.image,
             errors: dataScheme.errors,
             currency: dataScheme.currency,
+            current_price: dump.current_price,
+            market_cap: dump.market_cap,
             market_cap_rank: dump.market_cap_rank,
-            thumb: dump.thumb,
-            large: dump.large,
+            price_change_24h: dump.price_change_24h,
+            price_change_percentage_24h: dump.price_change_percentage_24h,
           })),
         });
       } catch (error) {
@@ -46,7 +48,7 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
         if (isAxiosError(error)) {
           const apiError = error as AxiosError;
           const errorMessage = apiError.message;
-          setSearchCoins((prevdata) => {
+          setMartketCoins((prevdata) => {
             return {
               paging: 0,
               errors: "Request failed! The code of currency is incorrect!",
@@ -71,7 +73,7 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
         }
       }
     };
-    fetchSearchData();
+    fetchDefaultData();
   }, [
     dataScheme.currency,
     dataScheme.errors,
@@ -80,5 +82,5 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
     urlCoinMart,
   ]);
 
-  return getSearchCoins;
+  return getMarketCoins;
 };

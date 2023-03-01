@@ -1,8 +1,9 @@
-export interface ICoinsMarketApiNorm {
+export interface IAPIDATAMarket {
   id: string;
   symbol: string;
   name: string;
   image: string;
+  errors: string;
   currency: string;
   current_price: number;
   market_cap: number;

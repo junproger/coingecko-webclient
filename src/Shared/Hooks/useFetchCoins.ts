@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { ICoinsInformApiNorm } from "@Interfaces/ICoinsInformApiNorm";
+import { IAPIDATACoins } from "@Interfaces/IAPIDATACoins";
 import { loging } from "@Utils/loging";
 import axios from "axios";
 
-export const useFetchCoinInfo = (idcoin: string | undefined) => {
+export const useFetchCoins = (idcoin: string | undefined) => {
   const urlCoinInfo = `https://api.coingecko.com/api/v3/coins/${idcoin}`;
 
-  const [getCoinInfo, setCoinInfo] = useState<ICoinsInformApiNorm>();
+  const [getCoinInfo, setCoinInfo] = useState<IAPIDATACoins>();
 
   useEffect(() => {
     const fetchCoinInfoData = async () => {
@@ -16,7 +16,7 @@ export const useFetchCoinInfo = (idcoin: string | undefined) => {
           method: "get",
           url: urlCoinInfo,
         });
-        const dump: ICoinsInformApiNorm = result.data;
+        const dump: IAPIDATACoins = result.data;
         setCoinInfo({
           id: dump.id,
           symbol: dump.symbol,

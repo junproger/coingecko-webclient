@@ -1,4 +1,4 @@
-export interface ICoinsInformApiNorm {
+export interface IAPIDATACoins {
   id: string;
   symbol: string;
   name: string;
