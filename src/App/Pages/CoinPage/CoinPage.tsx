@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useFetchCoinInfo } from "@Hooks/useFetchCoinInfo";
+import { useFetchCoins } from "@Hooks/useFetchCoins";
 import { useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
@@ -11,7 +11,7 @@ import styleCoinPage from "./styleCoinPage.module.scss";
 const CoinPage: React.FC = () => {
   const { idcoin } = useParams<{ idcoin: string }>();
 
-  const dataCoinInfo = useFetchCoinInfo(idcoin);
+  const dataCoinInfo = useFetchCoins(idcoin);
 
   return (
     <div className={styleCoinPage.coinpage}>

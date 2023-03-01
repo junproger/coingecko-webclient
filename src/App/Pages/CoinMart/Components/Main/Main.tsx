@@ -3,21 +3,23 @@ import React from "react";
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
 import { currencySymbols } from "@Configs/currencySymbols";
-import { ICoinsMarketApiNorm } from "@Interfaces/ICoinsMarketApiNorm";
-import { ISearchCoinsApiNorm } from "@Interfaces/ISearchCoinsApiNorm";
+import { IMAINDATAMarket } from "@Interfaces/IMAINDATAMarket";
+import { IMAINDATASearch } from "@Interfaces/IMAINDATASearch";
 import { Link } from "react-router-dom";
 
 import styleMain from "./styleMain.module.scss";
 
 interface ICoinMarketData {
-  coinmarketdata: ICoinsMarketApiNorm[];
-  coinsearchdata: ISearchCoinsApiNorm[];
+  coinmarketdata: IMAINDATAMarket;
+  coinsearchdata: IMAINDATASearch;
 }
 
 const Main: React.FC<ICoinMarketData> = ({
   coinmarketdata,
   coinsearchdata,
 }) => {
+  const resultsdata = coinmarketdata.results;
+
   const selectColor = (param: number) => {
     if (param >= 0) {
       return "#21BF73";
@@ -28,8 +30,8 @@ const Main: React.FC<ICoinMarketData> = ({
 
   return (
     <main className={styleMain.main}>
-      {coinmarketdata[0] ? (
-        coinmarketdata.map((coins) => (
+      {resultsdata[0] ? (
+        resultsdata.map((coins) => (
           <Link id={coins.id} key={coins.id} to={`/coins/${coins.id}`}>
             <Card
               alt={coins.id}
