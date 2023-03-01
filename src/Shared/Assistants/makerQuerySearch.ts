@@ -1,37 +1,37 @@
-import { IQueryDefault } from "@Interfaces/IQueryDefault";
+import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
-export const makerQuerySearch = (value: string): IQueryDefault => {
-  const api = "coins";
-  const hook = "market";
-  const datas = "market";
-  const control = {
-    type: "input",
-    path: "@Components/Input",
+export const makerQuerySearch = (value: string): IQUERYMarket => {
+  const paging = 1;
+  const errors = "";
+  const queries = value;
+  const scheme = {
+    api: "coins",
+    hook: "market",
+    scheme: "market",
+    errors: "",
+    control: {
+      type: "input",
+      path: "@Components/Input",
+    },
+    handler: null,
+    queries: queries,
+    currency: queries,
+    paging: "&per_page=10&page=1",
+    params: {
+      required: "vs_currency",
+      vs_currency: "usd",
+      per_page: 10,
+      page: 1,
+    },
+    v3docs: "https://www.coingecko.com/api/documentations/v3",
+    urlreq:
+      "https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=",
+    request: `https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=${queries}`,
   };
-  const handler = null;
-  const query = value;
-  const currency = query;
-  const paging = "&per_page=10&page=1";
-  const params = {
-    required: "vs_currency",
-    vs_currency: "usd",
-    per_page: 10,
-    page: 1,
-  };
-  const urlreq =
-    "https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=";
-  const request = `https://api.coingecko.com/api/v3/coins/markets?per_page=10&page=1&vs_currency=${query}`;
   return {
-    api: api,
-    hook: hook,
-    datas: datas,
-    control: control,
-    handler: handler,
-    query: query,
-    currency: currency,
     paging: paging,
-    params: params,
-    urlreq: urlreq,
-    request: request,
+    errors: errors,
+    queries: queries,
+    scheme: scheme,
   };
 };

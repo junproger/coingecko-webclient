@@ -1,5 +1,5 @@
-import { IQueryDefault } from "@Interfaces/IQueryDefault";
+import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
 export interface ICoinMartQuery {
-  coinmartquery: (query: IQueryDefault) => void;
+  coinmartquery: (query: IQUERYMarket) => void;
 }

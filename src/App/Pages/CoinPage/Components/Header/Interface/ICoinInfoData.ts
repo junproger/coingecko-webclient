@@ -1,5 +1,5 @@
-import { ICoinsInformApiNorm } from "@Interfaces/ICoinsInformApiNorm";
+import { IAPIDATACoins } from "@Interfaces/IAPIDATACoins";
 
 export interface ICoinInfoData {
-  coininfodata: ICoinsInformApiNorm | undefined;
+  coininfodata: IAPIDATACoins | undefined;
 }
