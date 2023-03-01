@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { useFetchDefault } from "@Hooks/useFetchDefault";
+import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
-import { IQueryDefault } from "@Interfaces/IQueryDefault";
-import { queryDefault } from "@Queries/queryDefault";
+import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
+import { QUERYMarket } from "@Queries/QUERYMarket";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -11,17 +11,24 @@ import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
 const CoinMart: React.FC = () => {
-  const [getQuery, setQuery] = useState<IQueryDefault>(queryDefault);
+  const [getQuery, setQuery] = useState<IQUERYMarket>(QUERYMarket);
 
   const fetchHUB = {
-    defaultFetch: useFetchDefault(getQuery),
+    defaultFetch: useFetchMarket(getQuery),
     defaultSearch: useFetchSearch(getQuery),
     // defaultChoose: null,
   };
 
+  // const interimReducer = () => null;
+
   return (
     <div className={styleCoinMart.coinmart}>
-      <Header coinmartquery={setQuery} />
+      <Header
+        coinmartquery={setQuery}
+        coinmarterror={
+          fetchHUB.defaultFetch.errors || fetchHUB.defaultSearch.errors
+        }
+      />
       <Main
         coinmarketdata={fetchHUB.defaultFetch}
         coinsearchdata={fetchHUB.defaultSearch}
