@@ -2,6 +2,8 @@ import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
 export const QUERYMarket: IQUERYMarket = {
   paging: 1,
+  endpage: true,
+  pageend: false,
   errors: "",
   queries: "usd",
   scheme: {
@@ -13,11 +15,15 @@ export const QUERYMarket: IQUERYMarket = {
       type: "page",
       path: "./App/Pages/CoinMart",
     },
-    handler: null,
+    handler: {
+      type: "useFetchMarket",
+      path: "@Hooks/useFetchMarket",
+    },
     queries: "usd",
     currency: "usd",
-    paging: "&per_page=10&page=1",
+    paging: 1,
     params: {
+      pagination: "&per_page=10&page=1",
       required: "vs_currency",
       vs_currency: "usd",
       per_page: 10,

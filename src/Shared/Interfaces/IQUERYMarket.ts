@@ -1,5 +1,7 @@
 export interface IQUERYMarket {
   paging: number;
+  endpage: boolean;
+  pageend: boolean;
   errors: string;
   queries: string;
   scheme: {
@@ -11,11 +13,15 @@ export interface IQUERYMarket {
       type: string;
       path: string;
     };
-    handler: null;
+    handler: {
+      type: string;
+      path: string;
+    };
     queries: string;
     currency: string;
-    paging: string;
+    paging: number;
     params: {
+      pagination: string;
       required: string;
       vs_currency: string;
       per_page: number;
