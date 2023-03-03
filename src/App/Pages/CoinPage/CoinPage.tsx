@@ -9,7 +9,7 @@ import Main from "./Components/Main";
 import styleCoinPage from "./styleCoinPage.module.scss";
 
 const CoinPage: React.FC = () => {
-  const { idcoin } = useParams<{ idcoin: string }>();
+  const { idcoin } = useParams<{ idcoin?: string }>();
 
   const dataCoinInfo = useFetchCoins(idcoin);
 

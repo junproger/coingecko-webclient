@@ -12,7 +12,7 @@ import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
 const CoinMart: React.FC = () => {
-  const { idpage } = useParams<{ idpage: string }>();
+  const { idpage } = useParams<{ idpage?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
   const [getUrl, setUrl] = useState<number>(pageNum);

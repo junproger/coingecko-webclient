@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import styleNavigate from "./styleNavigate.module.scss";
 
 const Navigate: React.FC = () => {
-  const { idpage } = useParams<{ idpage: string }>();
+  const { idpage } = useParams<{ idpage?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
   const [getShow, setShow] = useState<boolean>(true);
