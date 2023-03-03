@@ -10,14 +10,14 @@ export const Input: React.FC<InputProps> = ({
   value = "",
   placeholder = "",
   onChange,
-  className,
+  className = "",
   disabled = false,
   ...attrib
 }) => {
   const inputClasses = classNames(
     styleInput.input,
     { [styleInput.input_disabled]: disabled },
-    styleInput[className ? className : ""]
+    styleInput[className]
   );
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     return onChange(event.target.value);
