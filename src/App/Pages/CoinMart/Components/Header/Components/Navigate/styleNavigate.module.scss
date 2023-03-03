@@ -16,6 +16,11 @@
   color: $text-tertiary;
 
   &__arrows {
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 22px;
     margin-left: auto;
     display: flex;
     gap: 10px;
@@ -23,6 +28,10 @@
 
   &__links {
     color: $text-tertiary;
+  }
+
+  &__stop {
+    color: $bg-tertiary;
   }
 
 }
