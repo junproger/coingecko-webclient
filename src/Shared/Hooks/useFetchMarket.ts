@@ -14,6 +14,7 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
     paging: 0,
     errors: "",
     queries: "",
+    currency: "",
     results: [],
   });
 
@@ -29,6 +30,7 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
           paging: 1,
           errors: dataScheme.errors,
           queries: dataScheme.queries,
+          currency: dataScheme.currency,
           results: result.data.map((dump: IAPIDATAMarket) => ({
             id: dump.id,
             symbol: dump.symbol,
@@ -53,6 +55,7 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
               paging: 0,
               errors: "Request failed! The code of currency is incorrect!",
               queries: "",
+              currency: "",
               results: [...prevdata.results],
             };
           });

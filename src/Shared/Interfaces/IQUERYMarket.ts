@@ -4,6 +4,7 @@ export interface IQUERYMarket {
   pageend: boolean;
   errors: string;
   queries: string;
+  currency: string;
   scheme: {
     api: string;
     hook: string;

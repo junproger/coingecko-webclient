@@ -1,14 +1,16 @@
 import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
-export const makerQuerySearch = ([value, digit]: [
+export const makerQuerySearch = ([value, digit, curren]: [
   string,
-  number
+  number,
+  string
 ]): IQUERYMarket => {
   const paging = digit;
   const endpage = true;
   const pageend = false;
   const errors = "";
   const queries = value;
+  const currency = curren;
   const scheme = {
     api: "coins",
     hook: "market",
@@ -23,7 +25,7 @@ export const makerQuerySearch = ([value, digit]: [
       path: "@Hooks/useFetchSearch",
     },
     queries: queries,
-    currency: queries,
+    currency: currency,
     paging: paging,
     params: {
       pagination: "&per_page=10&page=1",
@@ -43,6 +45,7 @@ export const makerQuerySearch = ([value, digit]: [
     pageend: pageend,
     errors: errors,
     queries: queries,
+    currency: currency,
     scheme: scheme,
   };
 };

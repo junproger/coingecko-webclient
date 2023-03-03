@@ -6,6 +6,7 @@ export const QUERYMarket: IQUERYMarket = {
   pageend: false,
   errors: "",
   queries: "usd",
+  currency: "usd",
   scheme: {
     api: "coins",
     hook: "market",

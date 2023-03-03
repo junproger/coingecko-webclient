@@ -15,16 +15,19 @@ const CoinMart: React.FC = () => {
   const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
+  const currency: string = "usd";
+
   const [getUrl, setUrl] = useState<number>(pageNum);
   const [getQuery, setQuery] = useState<string>("usd");
-  const [getRequest, setRequest] = useState<[string, number]>([
+  const [getRequest, setRequest] = useState<[string, number, string]>([
     getQuery,
     getUrl,
+    currency,
   ]);
 
   useEffect(() => {
     setUrl(pageNum);
-    setRequest([getQuery, getUrl]);
+    setRequest([getQuery, getUrl, currency]);
   }, [getUrl, getQuery, pageNum]);
 
   const fetchHUB = {
