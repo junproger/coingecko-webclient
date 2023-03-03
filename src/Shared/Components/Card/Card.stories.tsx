@@ -25,7 +25,13 @@ export default {
       },
       control: "text",
     },
-    content: {
+    price: {
+      mapping: {
+        undefined: undefined,
+      },
+      control: "text",
+    },
+    change: {
       mapping: {
         undefined: undefined,
       },
