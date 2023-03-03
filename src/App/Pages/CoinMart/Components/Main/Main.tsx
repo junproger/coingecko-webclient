@@ -22,9 +22,9 @@ const Main: React.FC<ICoinMarketData> = ({
 
   const selectColor = (param: number) => {
     if (param >= 0) {
-      return "#21BF73";
+      return "card__content_change-green";
     } else {
-      return "#FB2173";
+      return "card__content_change-red";
     }
   };
 
@@ -38,21 +38,14 @@ const Main: React.FC<ICoinMarketData> = ({
               image={coins.image}
               title={coins.name}
               subtitle={coins.symbol.toUpperCase()}
-              content={
-                <>
-                  <div>
-                    {currencySymbols[coins.currency]}
-                    {coins.current_price}
-                  </div>
-                  <div
-                    style={{
-                      color: selectColor(coins.price_change_percentage_24h),
-                    }}
-                  >
-                    {coins.price_change_percentage_24h}%
-                  </div>
-                </>
+              className={selectColor(coins.price_change_percentage_24h)}
+              price={
+                <div>
+                  {currencySymbols[coins.currency]}
+                  {coins.current_price || 0}
+                </div>
               }
+              change={<div>{coins.price_change_percentage_24h || 0}%</div>}
             />
           </Link>
         ))
