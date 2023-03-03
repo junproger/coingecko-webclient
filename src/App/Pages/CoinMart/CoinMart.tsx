@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
+import { makerQueryMarket } from "@Assistants/makerQueryMarket";
+import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
-import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
-import { QUERYMarket } from "@Queries/QUERYMarket";
+import { useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -11,15 +12,26 @@ import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
 const CoinMart: React.FC = () => {
-  const [getQuery, setQuery] = useState<IQUERYMarket>(QUERYMarket);
+  const { idpage } = useParams<{ idpage: string }>();
+  const pageNum = parseInt(idpage || "1", 10);
+
+  const [getUrl, setUrl] = useState<number>(pageNum);
+  const [getQuery, setQuery] = useState<string>("usd");
+  const [getRequest, setRequest] = useState<[string, number]>([
+    getQuery,
+    getUrl,
+  ]);
+
+  useEffect(() => {
+    setUrl(pageNum);
+    setRequest([getQuery, getUrl]);
+  }, [getUrl, getQuery, pageNum]);
 
   const fetchHUB = {
-    defaultFetch: useFetchMarket(getQuery),
-    defaultSearch: useFetchSearch(getQuery),
+    defaultFetch: useFetchMarket(makerQueryMarket(getRequest)),
+    defaultSearch: useFetchSearch(makerQuerySearch(getRequest)),
     // defaultChoose: null,
   };
-
-  // const interimReducer = () => null;
 
   return (
     <div className={styleCoinMart.coinmart}>
