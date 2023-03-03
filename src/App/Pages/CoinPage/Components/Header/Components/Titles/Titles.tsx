@@ -1,16 +1,17 @@
 import React from "react";
 
 import { Loader, LoaderSize } from "@Components/Loader";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styleTitles from "./styleTitles.module.scss";
 import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
+  const navigate = useNavigate();
   return (
     <div className={styleTitles.titles}>
-      <div className={styleTitles.titles__link}>
-        <Link to={"/"}>
+      <div className={styleTitles.titles__back}>
+        <div onClick={() => navigate(-1)}>
           <svg
             width="10"
             height="15"
@@ -23,7 +24,7 @@ const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
               fill="#212529"
             />
           </svg>
-        </Link>
+        </div>
       </div>
       {coininfodata?.id ? (
         <div className={styleTitles.titles__coins}>
