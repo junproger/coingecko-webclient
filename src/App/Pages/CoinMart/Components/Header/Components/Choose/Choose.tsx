@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { LogoType } from "@Components/LogoType";
 import { MultiDropdown, Option } from "@Components/MultiDropdown";
+import { Link } from "react-router-dom";
 
 import styleChoose from "./styleChoose.module.scss";
 
@@ -22,7 +23,9 @@ const Choose: React.FC = () => {
 
   return (
     <div className={styleChoose.choose}>
-      <LogoType children="Coinmart" />
+      <Link to={"/"}>
+        <LogoType children="Coinmart" />
+      </Link>
       <MultiDropdown
         tabIndex={1}
         value={value}
