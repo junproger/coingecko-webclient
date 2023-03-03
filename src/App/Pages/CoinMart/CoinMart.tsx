@@ -4,7 +4,7 @@ import { makerQueryMarket } from "@Assistants/makerQueryMarket";
 import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
-import { useParams } from "react-router-dom";
+import { Params, useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -12,7 +12,7 @@ import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
 const CoinMart: React.FC = () => {
-  const { idpage } = useParams<{ idpage?: string }>();
+  const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
   const [getUrl, setUrl] = useState<number>(pageNum);
