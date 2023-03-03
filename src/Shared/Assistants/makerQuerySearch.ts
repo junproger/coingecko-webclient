@@ -25,7 +25,7 @@ export const makerQuerySearch = ([value, digit, curren]: [
       path: "@Hooks/useFetchSearch",
     },
     queries: queries,
-    currency: currency,
+    currency: queries,
     paging: paging,
     params: {
       pagination: "&per_page=10&page=1",
