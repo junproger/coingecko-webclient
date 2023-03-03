@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 
-import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
 
@@ -26,7 +25,7 @@ const Search: React.FC<ISearchWithError> = ({
   const handlerEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return coinmartquery(makerQuerySearch(value));
+      return coinmartquery(value);
     }
     return value;
   };
@@ -61,7 +60,7 @@ const Search: React.FC<ISearchWithError> = ({
       <Button
         loading={false}
         onClick={() => {
-          coinmartquery(makerQuerySearch(value));
+          coinmartquery(value);
           if (inputRef.current) inputRef.current.focus();
         }}
       >

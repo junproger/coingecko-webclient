@@ -7,11 +7,11 @@ import Search from "./Components/Search";
 import { ICoinMartQuery } from "./Interface/ICoinMartQuery";
 import styleHeader from "./styleHeader.module.scss";
 
-interface IHeaderWithError extends ICoinMartQuery {
+interface IHeaderWithQuery extends ICoinMartQuery {
   coinmarterror: string;
 }
 
-const Header: React.FC<IHeaderWithError> = ({
+const Header: React.FC<IHeaderWithQuery> = ({
   coinmartquery,
   coinmarterror,
 }) => {
