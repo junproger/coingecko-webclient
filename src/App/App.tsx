@@ -13,6 +13,7 @@ const App: React.FC = () => {
     <div className={styleApp.appframe}>
       <Routes>
         <Route path="/" element={<CoinMart />} />
+        <Route path="/:idpage" element={<CoinMart />} />
         <Route path="/coins" element={<Error />} />
         <Route path="/coins/:idcoin" element={<CoinPage />} />
         <Route path="/ping" element={<ApiPing />} />
