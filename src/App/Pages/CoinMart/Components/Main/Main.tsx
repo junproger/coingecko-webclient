@@ -32,7 +32,11 @@ const Main: React.FC<ICoinMarketData> = ({
     <main className={styleMain.main}>
       {resultsdata[0] ? (
         resultsdata.map((coins) => (
-          <Link id={coins.id} key={coins.id} to={`/coins/${coins.id}`}>
+          <Link
+            id={coins.id}
+            key={coins.id}
+            to={`/coins/${coins.id}/${coins.currency}`}
+          >
             <Card
               alt={coins.id}
               image={coins.image}

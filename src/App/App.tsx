@@ -16,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/:idpage" element={<CoinMart />} />
         <Route path="/coins" element={<Error />} />
         <Route path="/coins/:idcoin" element={<CoinPage />} />
+        <Route path="/coins/:idcoin/:idcurr" element={<CoinPage />} />
         <Route path="/ping" element={<ApiPing />} />
         <Route path="/*" element={<Error />} />
       </Routes>
