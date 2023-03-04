@@ -14,15 +14,15 @@ export interface IAPIDATACoins {
   };
   market_data: {
     market_cap: {
-      usd: number;
+      [index: string]: number;
     };
     current_price: {
-      usd: number;
+      [index: string]: number;
     };
     price_change_24h: number;
     price_change_percentage_24h: number;
     fully_diluted_valuation: {
-      usd: number;
+      [index: string]: number;
     };
     circulating_supply: number;
     total_supply: number;
