@@ -14,7 +14,7 @@ const CoinPage: React.FC = () => {
     idcurr: string;
   };
 
-  const dataCoinInfo = useFetchCoins(idcoin, idcurr);
+  const dataCoinInfo = useFetchCoins([idcoin, idcurr]);
 
   return (
     <div className={styleCoinPage.coinpage}>

@@ -4,7 +4,7 @@ import { IAPIDATACoins } from "@Interfaces/IAPIDATACoins";
 import { loging } from "@Utils/loging";
 import axios from "axios";
 
-export const useFetchCoins = (idcoin: string, idcurr: string) => {
+export const useFetchCoins = ([idcoin, idcurr]: [string, string]) => {
   const urlCoinInfo = `https://api.coingecko.com/api/v3/coins/${idcoin}`;
 
   const [getCoinInfo, setCoinInfo] = useState<IAPIDATACoins>();
