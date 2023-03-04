@@ -10,11 +10,11 @@ const App: React.FC = () => {
   return (
     <div className={styleApp.appframe}>
       <Routes>
-        <Route path="/" element={<CoinMart />} />
+        <Route path="/" element={<Navigate to="/usd" replace />} />
         <Route path="/:idcurr" element={<CoinMart />} />
-        <Route path="/:idcurr/:idpage" element={<CoinMart />} />
-        <Route path="/coins/:idcoin/:idcurr" element={<CoinPage />} />
-        <Route path="/*" element={<Navigate to="/" replace />} />
+        <Route path="/:idcurr/page/:idpage" element={<CoinMart />} />
+        <Route path="/:idcurr/coin/:idcoin" element={<CoinPage />} />
+        <Route path="/*" element={<Navigate to="/usd" replace />} />
       </Routes>
     </div>
   );

@@ -35,7 +35,7 @@ const Main: React.FC<ICoinMarketData> = ({
           <Link
             id={coins.id}
             key={coins.id}
-            to={`/coins/${coins.id}/${coins.currency}`}
+            to={`/${coins.currency}/coin/${coins.id}`}
           >
             <Card
               alt={coins.id}

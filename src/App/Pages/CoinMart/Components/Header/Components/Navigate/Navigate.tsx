@@ -48,7 +48,7 @@ const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
         {getPrev ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getCurr}/${getPrev}`}
+            to={`/${getCurr}/page/${getPrev}`}
             onClick={handlePrev}
           >
             &lt;prev
@@ -60,7 +60,7 @@ const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getCurr}/${getNext}`}
+            to={`/${getCurr}/page/${getNext}`}
             onClick={handleNext}
           >
             next&gt;
