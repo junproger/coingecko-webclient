@@ -4,18 +4,24 @@ import { Link, Params, useParams } from "react-router-dom";
 
 import styleNavigate from "./styleNavigate.module.scss";
 
-const Navigate: React.FC = () => {
+interface INavigate {
+  currenciesdata: string;
+}
+
+const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
   const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
   const [getShow, setShow] = useState<boolean>(true);
+  const [getCurr, setCurr] = useState<string>(currenciesdata);
   const [getPrev, setPrev] = useState<number>(pageNum - 1);
   const [getNext, setNext] = useState<number>(pageNum + 1);
 
   useEffect(() => {
+    setCurr(currenciesdata);
     setPrev(pageNum - 1);
     setNext(pageNum + 1);
-  }, [pageNum]);
+  }, [currenciesdata, pageNum]);
 
   const handlePrev = () => {
     setShow(true);
@@ -42,7 +48,7 @@ const Navigate: React.FC = () => {
         {getPrev ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getPrev}`}
+            to={`/${getCurr}/${getPrev}`}
             onClick={handlePrev}
           >
             &lt;prev
@@ -54,7 +60,7 @@ const Navigate: React.FC = () => {
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getNext}`}
+            to={`/${getCurr}/${getNext}`}
             onClick={handleNext}
           >
             next&gt;

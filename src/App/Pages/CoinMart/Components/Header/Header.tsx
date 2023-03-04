@@ -8,11 +8,13 @@ import { ICoinMartQuery } from "./Interface/ICoinMartQuery";
 import styleHeader from "./styleHeader.module.scss";
 
 interface IHeaderWithQuery extends ICoinMartQuery {
+  currenciesdata: string;
   coinmarterror: string;
 }
 
 const Header: React.FC<IHeaderWithQuery> = ({
   coinmartquery,
+  currenciesdata,
   coinmarterror,
 }) => {
   return (
@@ -20,7 +22,7 @@ const Header: React.FC<IHeaderWithQuery> = ({
       <Search coinmartquery={coinmartquery} coinmarterror={coinmarterror} />
       <Notice coinmarterror={coinmarterror} />
       <Choose />
-      <Navigate />
+      <Navigate currenciesdata={currenciesdata} />
     </header>
   );
 };

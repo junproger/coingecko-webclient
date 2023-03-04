@@ -4,7 +4,8 @@ import { makerQueryMarket } from "@Assistants/makerQueryMarket";
 import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
-import { Params, useParams } from "react-router-dom";
+import { loging } from "@Utils/loging";
+import { useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -12,23 +13,30 @@ import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
 const CoinMart: React.FC = () => {
-  const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
-  const pageNum = parseInt(idpage || "1", 10);
-
-  const currency: string = "usd";
+  const { idcurr, idpage } = useParams<{
+    idcurr: string;
+    idpage: string;
+  }>();
+  const pageNum: number = parseInt(idpage || "1", 10);
+  const pageCur: string = idcurr || "usd";
 
   const [getUrl, setUrl] = useState<number>(pageNum);
-  const [getQuery, setQuery] = useState<string>("usd");
+  const [getCurr, setCurr] = useState<string>(pageCur);
+
+  const [getQuery, setQuery] = useState<string>(getCurr);
   const [getRequest, setRequest] = useState<[string, number, string]>([
     getQuery,
     getUrl,
-    currency,
+    getQuery,
   ]);
+
+  loging(getCurr, getQuery);
 
   useEffect(() => {
     setUrl(pageNum);
-    setRequest([getQuery, getUrl, currency]);
-  }, [getUrl, getQuery, pageNum]);
+    setCurr(pageCur);
+    setRequest([getQuery, getUrl, getQuery]);
+  }, [pageNum, pageCur, getUrl, getQuery]);
 
   const fetchHUB = {
     defaultFetch: useFetchMarket(makerQueryMarket(getRequest)),
@@ -40,6 +48,7 @@ const CoinMart: React.FC = () => {
     <div className={styleCoinMart.coinmart}>
       <Header
         coinmartquery={setQuery}
+        currenciesdata={getQuery}
         coinmarterror={
           fetchHUB.defaultFetch.errors || fetchHUB.defaultSearch.errors
         }
