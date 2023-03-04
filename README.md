@@ -10,6 +10,6 @@ Web-client for CoinGecko API in ReactJS.
 4. Components (With components of App): if you start this branch, you can see the app's components.
 5. Storybook (With Storybook for App): if you start this branch, you can see the app's storybook.
 6. Cra-markup (Markup of pages App's (HW-3)): markup of pages of the app's layout according HW-3.
-7. Cra-pattern (Choose of Design Patterns): Model-View-Controller or Model-View-Presenter.
+7. Cra-routes (Add routing to App): routing of pages with pagination and routing from list to items.
 8. Cra-states (Working with State Managers): default CRA state managment and MobX state manager.
 
