@@ -26,14 +26,15 @@ const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
   const handlerEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return callvalue(value);
+      return value && callvalue(value);
     }
     return value;
   };
 
   const handlerClick = () => {
+    if (!value.trim()) return setValue("");
     if (inputRef.current) inputRef.current.focus();
-    return callvalue(value);
+    return value && callvalue(value);
   };
 
   const addErrorClass = {
