@@ -1,42 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { Link, Params, useParams } from "react-router-dom";
+import { Link, Params, useParams, useNavigate } from "react-router-dom";
 
+import {
+  ContextCurrency,
+  IContextCurrency,
+} from "./../../../../../../../Context";
 import styleNavigate from "./styleNavigate.module.scss";
 
-interface INavigate {
-  currenciesdata: string;
-}
+const Navigate: React.FC = () => {
+  const navigate = useNavigate();
+  const {
+    defaultContext: { currency },
+  }: IContextCurrency = useContext(ContextCurrency);
 
-const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
   const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
   const pageNum = parseInt(idpage || "1", 10);
 
   const [getShow, setShow] = useState<boolean>(true);
-  const [getCurr, setCurr] = useState<string>(currenciesdata);
-  const [getPrev, setPrev] = useState<number>(pageNum - 1);
-  const [getNext, setNext] = useState<number>(pageNum + 1);
+
+  const [getPageNum, setPageNum] = useState<number[]>([
+    pageNum - 1,
+    pageNum + 1,
+  ]);
 
   useEffect(() => {
-    setCurr(currenciesdata);
-    setPrev(pageNum - 1);
-    setNext(pageNum + 1);
-  }, [currenciesdata, pageNum]);
+    navigate(`/${currency}/page/${pageNum}`);
+    setPageNum([pageNum - 1, pageNum + 1]);
+  }, [currency, navigate, pageNum]);
 
   const handlePrev = () => {
     setShow(true);
-    if (getPrev < 1) return;
-    setPrev((prev) => prev - 1);
-    setNext((next) => next - 1);
+    if (getPageNum[0] < 1) return;
+    setPageNum((prev) => [prev[0] - 1, prev[1] - 1]);
   };
 
   const handleNext = () => {
-    if (getNext >= 1231) {
+    if (getPageNum[1] >= 1230) {
       setShow(false);
       return;
     }
-    setPrev((prev) => prev + 1);
-    setNext((next) => next + 1);
+    setPageNum((prev) => [prev[0] + 1, prev[1] + 1]);
   };
 
   return (
@@ -45,10 +49,10 @@ const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
       <span>Gainer</span>
       <span>Loser</span>
       <div className={styleNavigate.navigate__arrows}>
-        {getPrev ? (
+        {getPageNum[0] ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getCurr}/page/${getPrev}`}
+            to={`/${currency}/page/${getPageNum[0]}`}
             onClick={handlePrev}
           >
             &lt;prev
@@ -60,7 +64,7 @@ const Navigate: React.FC<INavigate> = ({ currenciesdata }) => {
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${getCurr}/page/${getNext}`}
+            to={`/${currency}/page/${getPageNum[1]}`}
             onClick={handleNext}
           >
             next&gt;

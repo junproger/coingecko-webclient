@@ -1,19 +1,23 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
 
+import {
+  ContextCurrency,
+  IContextCurrency,
+} from "./../../../../../../../Context";
 import styleSearch from "./styleSearch.module.scss";
-import { ICoinMartQuery } from "../../Interface/ICoinMartQuery";
 
-interface ISearchWithError extends ICoinMartQuery {
+interface ISearchWithError {
   coinmarterror: string;
 }
 
-const Search: React.FC<ISearchWithError> = ({
-  coinmartquery,
-  coinmarterror,
-}) => {
+const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
+  const {
+    defaultContext: { callbacks },
+  }: IContextCurrency = useContext(ContextCurrency);
+
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const [value, setValue] = useState<string>("");
@@ -22,15 +26,20 @@ const Search: React.FC<ISearchWithError> = ({
     setValue(value.trim().toLowerCase());
   };
 
-  const handlerEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+  const handlerEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return coinmartquery(value);
+      return callbacks(value);
     }
     return value;
   };
 
-  const addclass = {
+  const handlerClick = () => {
+    if (inputRef.current) inputRef.current.focus();
+    return callbacks(value);
+  };
+
+  const addErrorClass = {
     coinmarterror: coinmarterror,
     addincorrect: coinmarterror && "input_incorrect",
   };
@@ -43,7 +52,7 @@ const Search: React.FC<ISearchWithError> = ({
         placeholder="Search in currency: btc, usd, eur, gbp, jpy ..."
         onChange={handleChange}
         onKeyDown={handlerEnter}
-        className={addclass.addincorrect}
+        className={addErrorClass.addincorrect}
       />
       {value && (
         <Button
@@ -57,13 +66,7 @@ const Search: React.FC<ISearchWithError> = ({
           clear
         </Button>
       )}
-      <Button
-        loading={false}
-        onClick={() => {
-          coinmartquery(value);
-          if (inputRef.current) inputRef.current.focus();
-        }}
-      >
+      <Button loading={false} onClick={handlerClick}>
         <svg
           width="20"
           height="20"
