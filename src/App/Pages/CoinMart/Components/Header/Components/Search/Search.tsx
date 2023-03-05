@@ -64,7 +64,7 @@ const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
           clear
         </Button>
       )}
-      <Button loading={false} onClick={handlerClick}>
+      <Button loading={false} onClick={handlerClick} disabled={!value}>
         <svg
           width="20"
           height="20"
