@@ -21,6 +21,7 @@ module.exports = {
       "@Assistants": path.resolve(__dirname, "../", "src/Shared/Assistants"),
       "@Components": path.resolve(__dirname, "../", "src/Shared/Components"),
       "@Configs": path.resolve(__dirname, "../", "src/Configs"),
+      "@Context": path.resolve(__dirname, "../", "src/Context"),
       "@Hooks": path.resolve(__dirname, "../", "src/Shared/Hooks"),
       "@Interfaces": path.resolve(__dirname, "../", "src/Shared/Interfaces"),
       "@Queries": path.resolve(__dirname, "../", "src/Shared/Queries"),

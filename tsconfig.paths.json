@@ -6,6 +6,7 @@
       "@Assistants/*": ["./src/Shared/Assistants/*"],
       "@Components/*": ["./src/Shared/Components/*"],
       "@Configs/*": ["./src/Configs/*"],
+      "@Context/*": ["./src/Context/*"],
       "@Hooks/*": ["./src/Shared/Hooks/*"],
       "@Interfaces/*": ["./src/Shared/Interfaces/*"],
       "@Queries/*": ["./src/Shared/Queries/*"],
