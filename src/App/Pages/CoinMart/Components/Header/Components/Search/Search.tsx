@@ -2,11 +2,8 @@ import React, { useRef, useState, useContext } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
+import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
 
-import {
-  ContextCurrency,
-  IContextCurrency,
-} from "./../../../../../../../Context";
 import styleSearch from "./styleSearch.module.scss";
 
 interface ISearchWithError {
@@ -15,7 +12,7 @@ interface ISearchWithError {
 
 const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
   const {
-    defaultContext: { callbacks },
+    defaultContext: { callvalue },
   }: IContextCurrency = useContext(ContextCurrency);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -29,14 +26,14 @@ const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
   const handlerEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return callbacks(value);
+      return callvalue(value);
     }
     return value;
   };
 
   const handlerClick = () => {
     if (inputRef.current) inputRef.current.focus();
-    return callbacks(value);
+    return callvalue(value);
   };
 
   const addErrorClass = {

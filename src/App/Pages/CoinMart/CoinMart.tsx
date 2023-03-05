@@ -4,33 +4,27 @@ import { makerQueryMarket } from "@Assistants/makerQueryMarket";
 import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
-import { useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import Main from "./Components/Main";
 import styleCoinMart from "./styleCoinMart.module.scss";
 
-interface IQueryValue {
+interface IQueriesMart {
   queryValue: string;
+  queryNumber: number;
 }
 
-const CoinMart: React.FC<IQueryValue> = ({ queryValue }) => {
-  const { idpage } = useParams<{ idpage: string }>();
-  const pageNum: number = parseInt(idpage || "1", 10);
-
-  const [getUrl, setUrl] = useState<number>(pageNum);
-
+const CoinMart: React.FC<IQueriesMart> = ({ queryValue, queryNumber }) => {
   const [getRequest, setRequest] = useState<[string, number, string]>([
     queryValue,
-    getUrl,
+    queryNumber,
     queryValue,
   ]);
 
   useEffect(() => {
-    setUrl(pageNum);
-    setRequest([queryValue, getUrl, queryValue]);
-  }, [pageNum, queryValue, getUrl]);
+    setRequest([queryValue, queryNumber, queryValue]);
+  }, [queryValue, queryNumber]);
 
   const fetchHUB = {
     defaultFetch: useFetchMarket(makerQueryMarket(getRequest)),

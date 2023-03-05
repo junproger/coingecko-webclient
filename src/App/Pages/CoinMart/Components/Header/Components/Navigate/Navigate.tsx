@@ -1,37 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Link, Params, useParams, useNavigate } from "react-router-dom";
+import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
+import { Link, useNavigate } from "react-router-dom";
 
-import {
-  ContextCurrency,
-  IContextCurrency,
-} from "./../../../../../../../Context";
 import styleNavigate from "./styleNavigate.module.scss";
 
 const Navigate: React.FC = () => {
   const navigate = useNavigate();
   const {
-    defaultContext: { currency },
+    defaultContext: { currency, pagenum, callnumber },
   }: IContextCurrency = useContext(ContextCurrency);
-
-  const { idpage } = useParams<{ [idpage in keyof Params]?: string }>();
-  const pageNum = parseInt(idpage || "1", 10);
 
   const [getShow, setShow] = useState<boolean>(true);
 
   const [getPageNum, setPageNum] = useState<number[]>([
-    pageNum - 1,
-    pageNum + 1,
+    pagenum - 1,
+    pagenum + 1,
   ]);
 
   useEffect(() => {
-    navigate(`/${currency}/page/${pageNum}`);
-    setPageNum([pageNum - 1, pageNum + 1]);
-  }, [currency, navigate, pageNum]);
+    navigate(`/${currency}/page/${pagenum}`);
+  }, [currency, navigate, pagenum]);
 
   const handlePrev = () => {
     setShow(true);
     if (getPageNum[0] < 1) return;
+    callnumber(pagenum - 1);
     setPageNum((prev) => [prev[0] - 1, prev[1] - 1]);
   };
 
@@ -40,6 +34,7 @@ const Navigate: React.FC = () => {
       setShow(false);
       return;
     }
+    callnumber(pagenum + 1);
     setPageNum((prev) => [prev[0] + 1, prev[1] + 1]);
   };
 
@@ -60,7 +55,7 @@ const Navigate: React.FC = () => {
         ) : (
           <span className={styleNavigate.navigate__stop}>&lt;prev</span>
         )}
-        <strong>{pageNum}</strong>
+        <strong>{pagenum}</strong>
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
