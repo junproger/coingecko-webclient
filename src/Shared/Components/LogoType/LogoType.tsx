@@ -2,6 +2,15 @@ import React from "react";
 
 import styleLogoType from "./styleLogoType.module.scss";
 
-export const LogoType: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return <h1 className={styleLogoType.logotype}>{children}</h1>;
+export interface ILogoType {
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+export const LogoType: React.FC<ILogoType> = ({ children, onClick }) => {
+  return (
+    <h1 onClick={onClick} className={styleLogoType.logotype}>
+      {children}
+    </h1>
+  );
 };

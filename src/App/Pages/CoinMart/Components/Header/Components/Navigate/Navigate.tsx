@@ -19,6 +19,7 @@ const Navigate: React.FC = () => {
   ]);
 
   useEffect(() => {
+    setPageNum([pagenum - 1, pagenum + 1]);
     navigate(`/${currency}/page/${pagenum}`);
   }, [currency, navigate, pagenum]);
 

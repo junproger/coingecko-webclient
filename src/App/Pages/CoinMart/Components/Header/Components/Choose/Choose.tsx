@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { LogoType } from "@Components/LogoType";
 import { MultiDropdown, Option } from "@Components/MultiDropdown";
-import { Link } from "react-router-dom";
+import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
 
 import styleChoose from "./styleChoose.module.scss";
 
 const Choose: React.FC = () => {
+  const {
+    defaultContext: { callnumber },
+  }: IContextCurrency = useContext(ContextCurrency);
+
   const options: Option[] = [
     { key: "msk", value: "Moscow" },
     { key: "nnv", value: "Nizhny Novgorod" },
@@ -23,9 +27,7 @@ const Choose: React.FC = () => {
 
   return (
     <div className={styleChoose.choose}>
-      <Link to={"/"}>
-        <LogoType children="Coinmart" />
-      </Link>
+      <LogoType children="Coinmart" onClick={() => callnumber(1)} />
       <MultiDropdown
         tabIndex={1}
         value={value}
