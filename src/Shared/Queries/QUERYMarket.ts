@@ -8,13 +8,17 @@ export const QUERYMarket: IQUERYMarket = {
   queries: "usd",
   currency: "usd",
   scheme: {
-    api: "coins",
+    api: "/coins/markets",
     hook: "market",
     scheme: "market",
     errors: "",
     control: {
       type: "page",
       path: "./App/Pages/CoinMart",
+    },
+    assist: {
+      type: "makerQueryMarket",
+      path: "@Assistants/makerQueryMarket",
     },
     handler: {
       type: "useFetchMarket",

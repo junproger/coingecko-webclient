@@ -12,13 +12,17 @@ export const makerQueryMarket = ([value, digit, curren]: [
   const queries = value;
   const currency = curren;
   const scheme = {
-    api: "coins",
+    api: "/coins/markets",
     hook: "market",
     scheme: "market",
     errors: "",
     control: {
       type: "page",
       path: "./App/Pages/CoinMart",
+    },
+    assist: {
+      type: "makerQueryMarket",
+      path: "@Assistants/makerQueryMarket",
     },
     handler: {
       type: "useFetchMarket",

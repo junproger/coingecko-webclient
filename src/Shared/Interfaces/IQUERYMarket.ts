@@ -14,6 +14,10 @@ export interface IQUERYMarket {
       type: string;
       path: string;
     };
+    assist: {
+      type: string;
+      path: string;
+    };
     handler: {
       type: string;
       path: string;

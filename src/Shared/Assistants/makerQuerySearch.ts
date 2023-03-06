@@ -12,13 +12,17 @@ export const makerQuerySearch = ([value, digit, curren]: [
   const queries = value;
   const currency = curren;
   const scheme = {
-    api: "coins",
+    api: "/coins/markets",
     hook: "market",
     scheme: "market",
     errors: "",
     control: {
       type: "input",
       path: "@Components/Input",
+    },
+    assist: {
+      type: "makerQueryMarket",
+      path: "@Assistants/makerQueryMarket",
     },
     handler: {
       type: "useFetchSearch",
