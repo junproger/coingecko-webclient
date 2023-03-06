@@ -6,8 +6,6 @@ export const makerQueryMarket = ([value, digit, curren]: [
   string
 ]): IQUERYMarket => {
   const paging = digit;
-  const endpage = true;
-  const pageend = false;
   const errors = "";
   const queries = value;
   const currency = curren;
@@ -45,8 +43,6 @@ export const makerQueryMarket = ([value, digit, curren]: [
   };
   return {
     paging: paging,
-    endpage: endpage,
-    pageend: pageend,
     errors: errors,
     queries: queries,
     currency: currency,

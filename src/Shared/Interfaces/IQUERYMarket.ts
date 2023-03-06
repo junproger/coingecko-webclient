@@ -1,7 +1,5 @@
 export interface IQUERYMarket {
   paging: number;
-  endpage: boolean;
-  pageend: boolean;
   errors: string;
   queries: string;
   currency: string;

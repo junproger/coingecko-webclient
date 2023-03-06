@@ -2,8 +2,6 @@ import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
 export const QUERYMarket: IQUERYMarket = {
   paging: 1,
-  endpage: true,
-  pageend: false,
   errors: "",
   queries: "usd",
   currency: "usd",
