@@ -1,8 +1,8 @@
-export interface IcurrencySymbols {
+export interface ICurrencySymbols {
   [index: string]: string;
 }
 
-export const currencySymbols: IcurrencySymbols = {
+export const currencySymbols: ICurrencySymbols = {
   btc: "₿",
   eth: "Ξ",
   ltc: "Ł",
@@ -23,16 +23,21 @@ export const currencySymbols: IcurrencySymbols = {
   bdt: "৳",
   bhd: "BD",
   bmd: "B$",
+  bnb: "BNB",
   brl: "R$",
   cad: "C$",
   chf: "CHF",
   cny: "元",
   czk: "Kč",
+  dkk: "kr.",
   hkd: "HK$",
   huf: "Ft",
   idr: "Rp",
   ils: "₪",
   inr: "₹",
+  krw: "₩",
+  kwd: "د.ك",
+  lkr: "රු,",
   php: "₱",
   sar: "﷼",
   sek: "kr",

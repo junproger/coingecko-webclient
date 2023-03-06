@@ -1,4 +1,4 @@
-export const vs_currencies = [
+export const currencyCodes: string[] = [
   "btc",
   "eth",
   "ltc",
