@@ -51,7 +51,7 @@ const App: React.FC = () => {
     "# number: ",
     getState.pagenum,
     getState.pagemap,
-    "context: ",
+    "# context: ",
     defaultContext.defaultContext.currency,
     defaultContext.defaultContext.pagenum,
     defaultContext.defaultContext.pagemap
