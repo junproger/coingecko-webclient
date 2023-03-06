@@ -3,11 +3,7 @@ import React from "react";
 export interface IContextCurrency {
   defaultContext: {
     pagenum: number;
-    pagemap: {
-      pageprev: number;
-      pagefact: number;
-      pagenext: number;
-    };
+    pagemap: number[];
     currency: string;
     callvalue: (value: string) => void;
     callnumber: (number: number) => void;
@@ -17,11 +13,7 @@ export interface IContextCurrency {
 export const ContextCurrency = React.createContext<IContextCurrency>({
   defaultContext: {
     pagenum: 1,
-    pagemap: {
-      pageprev: 0,
-      pagefact: 1,
-      pagenext: 2,
-    },
+    pagemap: [0, 1, 2],
     currency: "usd",
     callvalue() {
       return;

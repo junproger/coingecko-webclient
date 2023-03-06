@@ -8,20 +8,23 @@ import CoinMart from "./Pages/CoinMart";
 import CoinPage from "./Pages/CoinPage";
 import styleApp from "./styleApp.module.scss";
 
+interface IAppState {
+  pagenum: number;
+  pagemap: number[];
+  currency: string;
+}
+
 const App: React.FC = () => {
-  const [getState, setState] = useState<{
-    pagenum: number;
-    currency: string;
-  }>({ pagenum: 1, currency: "usd" });
+  const [getState, setState] = useState<IAppState>({
+    pagenum: 1,
+    pagemap: [0, 1, 2],
+    currency: "usd",
+  });
 
   const defaultContext: IContextCurrency = {
     defaultContext: {
       pagenum: getState.pagenum,
-      pagemap: {
-        pageprev: 0,
-        pagefact: 1,
-        pagenext: 2,
-      },
+      pagemap: [getState.pagenum - 1, getState.pagenum, getState.pagenum + 1],
       currency: getState.currency,
       callvalue(value) {
         setState((prevState) => {
@@ -31,7 +34,11 @@ const App: React.FC = () => {
       },
       callnumber(number) {
         setState((prevState) => {
-          return { ...prevState, pagenum: number };
+          return {
+            ...prevState,
+            pagenum: number,
+            pagemap: [number - 1, number, number + 1],
+          };
         });
         return;
       },
@@ -39,13 +46,15 @@ const App: React.FC = () => {
   };
 
   loging(
+    "value: ",
+    getState.currency,
+    "# number: ",
+    getState.pagenum,
+    getState.pagemap,
     "context: ",
     defaultContext.defaultContext.currency,
     defaultContext.defaultContext.pagenum,
-    "# value: ",
-    getState.currency,
-    "# number: ",
-    getState.pagenum
+    defaultContext.defaultContext.pagemap
   );
 
   return (

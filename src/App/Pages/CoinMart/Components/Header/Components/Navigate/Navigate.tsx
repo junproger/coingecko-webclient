@@ -8,35 +8,27 @@ import styleNavigate from "./styleNavigate.module.scss";
 const Navigate: React.FC = () => {
   const navigate = useNavigate();
   const {
-    defaultContext: { currency, pagenum, callnumber },
+    defaultContext: { currency, pagenum, pagemap, callnumber },
   }: IContextCurrency = useContext(ContextCurrency);
 
   const [getShow, setShow] = useState<boolean>(true);
 
-  const [getPageNum, setPageNum] = useState<number[]>([
-    pagenum - 1,
-    pagenum + 1,
-  ]);
-
   useEffect(() => {
-    setPageNum([pagenum - 1, pagenum + 1]);
     navigate(`/${currency}/page/${pagenum}`);
   }, [currency, navigate, pagenum]);
 
   const handlePrev = () => {
     setShow(true);
-    if (getPageNum[0] < 1) return;
+    if (pagemap[0] < 1) return;
     callnumber(pagenum - 1);
-    setPageNum((prev) => [prev[0] - 1, prev[1] - 1]);
   };
 
   const handleNext = () => {
-    if (getPageNum[1] >= 1230) {
+    if (pagemap[2] >= 1230) {
       setShow(false);
       return;
     }
     callnumber(pagenum + 1);
-    setPageNum((prev) => [prev[0] + 1, prev[1] + 1]);
   };
 
   return (
@@ -45,10 +37,10 @@ const Navigate: React.FC = () => {
       <span>Gainer</span>
       <span>Loser</span>
       <div className={styleNavigate.navigate__arrows}>
-        {getPageNum[0] ? (
+        {pagemap[0] ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${currency}/page/${getPageNum[0]}`}
+            to={`/${currency}/page/${pagemap[0]}`}
             onClick={handlePrev}
           >
             &lt;prev
@@ -56,11 +48,11 @@ const Navigate: React.FC = () => {
         ) : (
           <span className={styleNavigate.navigate__stop}>&lt;prev</span>
         )}
-        <strong>{pagenum}</strong>
+        <strong>{pagemap[1]}</strong>
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${currency}/page/${getPageNum[1]}`}
+            to={`/${currency}/page/${pagemap[2]}`}
             onClick={handleNext}
           >
             next&gt;
