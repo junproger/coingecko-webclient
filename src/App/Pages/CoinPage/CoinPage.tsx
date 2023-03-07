@@ -15,11 +15,12 @@ const CoinPage: React.FC = () => {
   };
 
   const dataCoinInfo = useFetchCoins([idcoin, idcurr]);
+  const dataCoinResult = dataCoinInfo.results[0];
 
   return (
     <div className={styleCoinPage.coinpage}>
-      <Header coininfodata={dataCoinInfo} />
-      <Main description={dataCoinInfo?.description.en || ""} />
+      <Header coininfodata={dataCoinResult} />
+      <Main description={dataCoinResult?.description.en || ""} />
       <Footer />
     </div>
   );
