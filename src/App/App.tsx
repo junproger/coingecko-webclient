@@ -21,27 +21,29 @@ const App: React.FC = () => {
     currency: "usd",
   });
 
+  const setCurrValue = (value: string) => {
+    if (!value) return;
+    setState((prevState) => {
+      return { ...prevState, currency: value };
+    });
+  };
+
+  const setPageDigit = (digit: number) => {
+    if (!digit) return;
+    setState((prevState) => {
+      return {
+        ...prevState,
+        pagenum: digit,
+        pagemap: [digit - 1, digit, digit + 1],
+      };
+    });
+  };
+
   const defaultContext: IContextCurrency = {
     defaultContext: {
       pagenum: getState.pagenum,
       pagemap: [getState.pagenum - 1, getState.pagenum, getState.pagenum + 1],
       currency: getState.currency,
-      callvalue(value) {
-        setState((prevState) => {
-          return { ...prevState, currency: value };
-        });
-        return;
-      },
-      callnumber(number) {
-        setState((prevState) => {
-          return {
-            ...prevState,
-            pagenum: number,
-            pagemap: [number - 1, number, number + 1],
-          };
-        });
-        return;
-      },
     },
   };
 
@@ -61,18 +63,20 @@ const App: React.FC = () => {
     <ContextCurrency.Provider value={defaultContext}>
       <div className={styleApp.appframe}>
         <Routes>
-          <Route path="/" element={<Navigate to="/usd/page/1" replace />} />
+          <Route path="/" element={<Navigate to="/usd/pages/1" replace />} />
           <Route
-            path="/:idcurr/page/:idpage"
+            path="/:idcurr/pages/:idpage"
             element={
               <CoinMart
+                setupValue={setCurrValue}
+                setupDigit={setPageDigit}
                 queryValue={getState.currency}
-                queryNumber={getState.pagenum}
+                queryDigit={getState.pagenum}
               />
             }
           />
-          <Route path="/:idcurr/coin/:idcoin" element={<CoinPage />} />
-          <Route path="/*" element={<Navigate to="/usd/page/1" replace />} />
+          <Route path="/:idcurr/coins/:idcoin" element={<CoinPage />} />
+          <Route path="/*" element={<Navigate to="/usd/pages/1" replace />} />
         </Routes>
       </div>
     </ContextCurrency.Provider>
