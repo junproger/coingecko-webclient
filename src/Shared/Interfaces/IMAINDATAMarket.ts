@@ -5,5 +5,7 @@ export interface IMAINDATAMarket {
   errors: string;
   queries: string;
   currency: string;
+  totalitems: number;
+  thepageend: number;
   results: [] | IAPIDATAMarket[];
 }

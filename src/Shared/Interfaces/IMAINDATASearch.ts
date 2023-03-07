@@ -5,5 +5,7 @@ export interface IMAINDATASearch {
   errors: string;
   queries: string;
   currency: string;
+  totalitems: number;
+  thepageend: number;
   results: [] | IAPIDATASearch[];
 }
