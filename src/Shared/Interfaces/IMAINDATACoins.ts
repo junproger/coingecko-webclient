@@ -5,5 +5,5 @@ export interface IMAINDATACoins {
   errors: string;
   queries: string;
   currency: string;
-  results: {} | IAPIDATACoins;
+  results: [] | IAPIDATACoins[];
 }
