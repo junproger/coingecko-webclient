@@ -4,6 +4,7 @@ import { makerQueryMarket } from "@Assistants/makerQueryMarket";
 import { makerQuerySearch } from "@Assistants/makerQuerySearch";
 import { useFetchMarket } from "@Hooks/useFetchMarket";
 import { useFetchSearch } from "@Hooks/useFetchSearch";
+import { useParams } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
@@ -12,19 +13,43 @@ import styleCoinMart from "./styleCoinMart.module.scss";
 
 interface IQueriesMart {
   queryValue: string;
-  queryNumber: number;
+  queryDigit: number;
+  setupValue: (value: string) => void;
+  setupDigit: (value: number) => void;
 }
 
-const CoinMart: React.FC<IQueriesMart> = ({ queryValue, queryNumber }) => {
+const CoinMart: React.FC<IQueriesMart> = ({
+  queryValue,
+  queryDigit,
+  setupValue,
+  setupDigit,
+}) => {
+  const { idcurr, idpage } = useParams<{
+    idcurr: string;
+    idpage: string;
+  }>();
+  const pageNumb = +(idpage || "1");
+  const pageCurr = idcurr || "usd";
+
   const [getRequest, setRequest] = useState<[string, number, string]>([
-    queryValue,
-    queryNumber,
-    queryValue,
+    pageCurr,
+    pageNumb,
+    pageCurr,
   ]);
 
   useEffect(() => {
-    setRequest([queryValue, queryNumber, queryValue]);
-  }, [queryValue, queryNumber]);
+    if (pageCurr && pageNumb) {
+      if (pageCurr !== queryValue) {
+        setupValue(pageCurr);
+      }
+      if (pageNumb !== queryDigit) {
+        setupDigit(pageNumb);
+      }
+      if (pageCurr !== queryValue || pageNumb !== queryDigit) {
+        setRequest([pageCurr, pageNumb, pageCurr]);
+      }
+    }
+  }, [pageCurr, pageNumb, queryDigit, queryValue, setupDigit, setupValue]);
 
   const fetchHUB = {
     defaultFetch: useFetchMarket(makerQueryMarket(getRequest)),

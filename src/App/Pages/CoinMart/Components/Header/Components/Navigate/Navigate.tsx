@@ -1,34 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import styleNavigate from "./styleNavigate.module.scss";
 
 const Navigate: React.FC = () => {
-  const navigate = useNavigate();
   const {
-    defaultContext: { currency, pagenum, pagemap, callnumber },
+    defaultContext: { currency, pagemap },
   }: IContextCurrency = useContext(ContextCurrency);
 
   const [getShow, setShow] = useState<boolean>(true);
 
-  useEffect(() => {
-    navigate(`/${currency}/page/${pagenum}`);
-  }, [currency, navigate, pagenum]);
-
   const handlePrev = () => {
     setShow(true);
     if (pagemap[0] < 1) return;
-    callnumber(pagenum - 1);
   };
 
   const handleNext = () => {
     if (pagemap[2] >= 1230) {
       setShow(false);
-      return;
     }
-    callnumber(pagenum + 1);
   };
 
   return (
@@ -40,7 +32,7 @@ const Navigate: React.FC = () => {
         {pagemap[0] ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${currency}/page/${pagemap[0]}`}
+            to={`/${currency}/pages/${pagemap[0]}`}
             onClick={handlePrev}
           >
             &lt;prev
@@ -52,7 +44,7 @@ const Navigate: React.FC = () => {
         {getShow ? (
           <Link
             className={styleNavigate.navigate__links}
-            to={`/${currency}/page/${pagemap[2]}`}
+            to={`/${currency}/pages/${pagemap[2]}`}
             onClick={handleNext}
           >
             next&gt;

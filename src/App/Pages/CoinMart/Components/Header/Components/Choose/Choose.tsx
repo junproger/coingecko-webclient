@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import { LogoType } from "@Components/LogoType";
 import { MultiDropdown, Option } from "@Components/MultiDropdown";
-import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styleChoose from "./styleChoose.module.scss";
 
 const Choose: React.FC = () => {
-  const {
-    defaultContext: { callnumber },
-  }: IContextCurrency = useContext(ContextCurrency);
+  const { idcurr } = useParams<{ idcurr: string }>();
+  const currPage = idcurr || "usd";
+  const navigate = useNavigate();
 
   const options: Option[] = [
     { key: "msk", value: "Moscow" },
@@ -27,7 +27,10 @@ const Choose: React.FC = () => {
 
   return (
     <div className={styleChoose.choose}>
-      <LogoType children="Coinmart" onClick={() => callnumber(1)} />
+      <LogoType
+        children="Coinmart"
+        onClick={() => navigate(`/${currPage}/pages/1`)}
+      />
       <MultiDropdown
         tabIndex={1}
         value={value}

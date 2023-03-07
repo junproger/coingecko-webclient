@@ -1,8 +1,8 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
-import { ContextCurrency, IContextCurrency } from "@Context/ContextCurrency";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styleSearch from "./styleSearch.module.scss";
 
@@ -11,11 +11,9 @@ interface ISearchWithError {
 }
 
 const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
-  const {
-    defaultContext: { callvalue },
-  }: IContextCurrency = useContext(ContextCurrency);
-
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const { idpage } = useParams<{ idpage: string }>();
+  const numbPage = idpage || "1";
+  const navigate = useNavigate();
 
   const [value, setValue] = useState<string>("");
 
@@ -23,10 +21,12 @@ const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
     setValue(value.trim().toLowerCase());
   };
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
   const handlerEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!value.trim()) return setValue("");
     if (e.key === "Enter") {
-      return value && callvalue(value);
+      return value && navigate(`/${value}/pages/${numbPage}`);
     }
     return value;
   };
@@ -34,7 +34,7 @@ const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
   const handlerClick = () => {
     if (!value.trim()) return setValue("");
     if (inputRef.current) inputRef.current.focus();
-    return value && callvalue(value);
+    return value && navigate(`/${value}/pages/${numbPage}`);
   };
 
   const addErrorClass = {
