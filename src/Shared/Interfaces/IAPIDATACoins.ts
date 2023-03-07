@@ -2,6 +2,8 @@ export interface IAPIDATACoins {
   id: string;
   symbol: string;
   name: string;
+  errors: string;
+  currency: string;
   categories: string[];
   market_cap_rank: number;
   image: {
