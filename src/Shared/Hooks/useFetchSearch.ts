@@ -11,10 +11,12 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
   const urlCoinMart: string = defaultQuery.scheme.request;
 
   const [getSearchCoins, setSearchCoins] = useState<IMAINDATASearch>({
-    paging: 0,
+    paging: 1,
     errors: "",
-    queries: "",
-    currency: "",
+    queries: "usd",
+    currency: "usd",
+    totalitems: 0,
+    thepageend: 0,
     results: [],
   });
 
@@ -31,6 +33,8 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
           errors: dataScheme.errors,
           queries: dataScheme.queries,
           currency: dataScheme.currency,
+          totalitems: result.data.coins.length,
+          thepageend: Math.trunc(result.data.coins.length / 10),
           results: result.data.coins.map((dump: IAPIDATASearch) => ({
             id: dump.id,
             name: dump.name,
@@ -54,6 +58,8 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
               errors: "Request failed! The code of currency is incorrect!",
               queries: "",
               currency: "",
+              totalitems: 0,
+              thepageend: 0,
               results: [...prevdata.results],
             };
           });

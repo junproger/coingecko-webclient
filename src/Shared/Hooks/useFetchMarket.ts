@@ -11,10 +11,12 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   const urlCoinMart: string = defaultQuery.scheme.request;
 
   const [getMarketCoins, setMartketCoins] = useState<IMAINDATAMarket>({
-    paging: 0,
+    paging: 1,
     errors: "",
-    queries: "",
-    currency: "",
+    queries: "usd",
+    currency: "usd",
+    totalitems: 0,
+    thepageend: 0,
     results: [],
   });
 
@@ -31,6 +33,8 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
           errors: dataScheme.errors,
           queries: dataScheme.queries,
           currency: dataScheme.currency,
+          totalitems: result.data.length,
+          thepageend: Math.trunc(result.data.length / 10),
           results: result.data.map((dump: IAPIDATAMarket) => ({
             id: dump.id,
             symbol: dump.symbol,
@@ -56,6 +60,8 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
               errors: "Request failed! The code of currency is incorrect!",
               queries: "",
               currency: "",
+              totalitems: 0,
+              thepageend: 0,
               results: [...prevdata.results],
             };
           });
