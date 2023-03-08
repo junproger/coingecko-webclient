@@ -8,13 +8,13 @@ import axios, { AxiosError, isAxiosError } from "axios";
 
 export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   const dataScheme = defaultQuery.scheme;
-  const urlCoinMart: string = defaultQuery.scheme.request;
+  const urlCoinMart: string = dataScheme.request;
 
   const [getMarketCoins, setMartketCoins] = useState<IMAINDATAMarket>({
     paging: 1,
     errors: "",
-    queries: "usd",
-    currency: "usd",
+    queries: "btc",
+    currency: "btc",
     totalitems: 0,
     thepageend: 0,
     results: [],
@@ -23,6 +23,7 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   useEffect(() => {
     if (dataScheme.hook !== "market") return;
     const fetchDefaultData = async () => {
+      if (!urlCoinMart) return loging("Hasn't URL!");
       try {
         const result = await axios({
           method: "get",
