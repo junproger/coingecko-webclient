@@ -1,6 +1,6 @@
 import { IQUERYCoins } from "@Interfaces/IQUERYCoins";
 
-export const makerQueryCoins = ([value, curren]: [
+export const makerQueryCoins = ([curren, value]: [
   string,
   string
 ]): IQUERYCoins => {
