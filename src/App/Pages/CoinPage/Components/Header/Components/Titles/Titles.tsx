@@ -7,6 +7,7 @@ import styleTitles from "./styleTitles.module.scss";
 import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
+  const coinsTitles = coininfodata && coininfodata;
   const navigate = useNavigate();
   return (
     <div className={styleTitles.titles}>
@@ -26,20 +27,20 @@ const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
           </svg>
         </div>
       </div>
-      {coininfodata?.id ? (
+      {coinsTitles ? (
         <div className={styleTitles.titles__coins}>
           <div className={styleTitles.titles__coins_icon}>
             <img
               className={styleTitles.titles__coins_image}
-              alt={coininfodata?.name}
-              src={coininfodata?.image.thumb}
+              alt={coinsTitles.name}
+              src={coinsTitles.image.thumb}
             />
           </div>
           <div className={styleTitles.titles__coins_title}>
-            {coininfodata?.name}
+            {coinsTitles.name}
           </div>
           <div className={styleTitles.titles__coins_subtitle}>
-            ({coininfodata?.symbol.toUpperCase()})
+            ({coinsTitles.symbol.toUpperCase()})
           </div>
         </div>
       ) : (

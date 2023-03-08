@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Loader, LoaderSize } from "@Components/Loader";
 import { currencySymbols } from "@Configs/currencySymbols";
 import { useParams } from "react-router-dom";
 
@@ -8,10 +7,13 @@ import stylePrices from "./stylePrices.module.scss";
 import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Prices: React.FC<ICoinInfoData> = ({ coininfodata }) => {
-  const { idcurr } = useParams() as { idcurr: string };
+  const coinsPrices = coininfodata && coininfodata?.market_data;
 
-  const current_price = coininfodata?.market_data.current_price[idcurr];
-  const percentage_24h = coininfodata?.market_data.price_change_percentage_24h;
+  const { idcurr } = useParams<{ idcurr: string }>();
+  const dataCurr = idcurr || "usd";
+
+  const current_price = coinsPrices?.current_price;
+  const price_change = coinsPrices?.price_change_percentage_24h;
 
   const selectColor = (param: number | undefined) => {
     if (param && param >= 0) {
@@ -21,18 +23,18 @@ const Prices: React.FC<ICoinInfoData> = ({ coininfodata }) => {
     }
   };
 
-  return coininfodata?.id ? (
+  return coinsPrices ? (
     <div className={stylePrices.prices}>
       <div className={stylePrices.prices__current}>
-        {currencySymbols[idcurr]}
-        {current_price || 0}
+        {currencySymbols[dataCurr]}
+        {current_price[dataCurr] || 0}
       </div>
-      <div className={stylePrices[selectColor(percentage_24h)]}>
-        {percentage_24h}%
+      <div className={stylePrices[selectColor(price_change)]}>
+        {price_change || 0}%
       </div>
     </div>
   ) : (
-    <Loader loading={true} size={LoaderSize.m} />
+    <div></div>
   );
 };
 
