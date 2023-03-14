@@ -1,8 +1,9 @@
 export interface IQUERYCoins {
-  paging: number;
   errors: string;
   queries: string;
   currency: string;
+  factpage: number;
+  perpage: number;
   scheme: {
     api: string;
     hook: string;
@@ -22,8 +23,9 @@ export interface IQUERYCoins {
     };
     queries: string;
     currency: string;
-    paging: number;
-    params: {};
+    factpage: number;
+    perpage: number;
+    params: null;
     v3docs: string;
     urlreq: string;
     request: string;

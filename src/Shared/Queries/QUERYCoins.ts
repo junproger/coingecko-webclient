@@ -1,10 +1,11 @@
 import { IQUERYCoins } from "@Interfaces/IQUERYCoins";
 
 export const QUERYCoins: IQUERYCoins = {
-  paging: 0,
   errors: "",
   queries: "bitcoin",
   currency: "usd",
+  factpage: 0,
+  perpage: 0,
   scheme: {
     api: "/coins/{id}",
     hook: "coins",
@@ -24,8 +25,9 @@ export const QUERYCoins: IQUERYCoins = {
     },
     queries: "bitcoin",
     currency: "usd",
-    paging: 0,
-    params: {},
+    factpage: 0,
+    perpage: 0,
+    params: null,
     v3docs: "https://www.coingecko.com/api/documentations/v3",
     urlreq: "https://api.coingecko.com/api/v3/coins",
     request: "https://api.coingecko.com/api/v3/coins/bitcoin",

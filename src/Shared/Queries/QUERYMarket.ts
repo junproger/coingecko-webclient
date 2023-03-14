@@ -1,10 +1,11 @@
 import { IQUERYMarket } from "@Interfaces/IQUERYMarket";
 
 export const QUERYMarket: IQUERYMarket = {
-  paging: 1,
   errors: "",
   queries: "usd",
   currency: "usd",
+  factpage: 1,
+  perpage: 10,
   scheme: {
     api: "/coins/markets",
     hook: "market",
@@ -24,7 +25,8 @@ export const QUERYMarket: IQUERYMarket = {
     },
     queries: "usd",
     currency: "usd",
-    paging: 1,
+    factpage: 1,
+    perpage: 10,
     params: {
       pagination: "&per_page=10&page=1",
       required: "vs_currency",

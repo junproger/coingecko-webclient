@@ -1,8 +1,9 @@
 export interface IQUERYMarket {
-  paging: number;
   errors: string;
   queries: string;
   currency: string;
+  factpage: number;
+  perpage: number;
   scheme: {
     api: string;
     hook: string;
@@ -22,7 +23,8 @@ export interface IQUERYMarket {
     };
     queries: string;
     currency: string;
-    paging: number;
+    factpage: number;
+    perpage: number;
     params: {
       pagination: string;
       required: string;
