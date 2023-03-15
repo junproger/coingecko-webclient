@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Loader, LoaderSize } from "@Components/Loader";
-import { currencySymbols } from "@Configs/currencySymbols";
+import { currenciesSymbols } from "@Configs/currenciesSymbols";
 import { useParams } from "react-router-dom";
 
 import styleValues from "./styleValues.module.scss";
@@ -23,7 +23,7 @@ const Values: React.FC<ICoinInfoData> = ({ coininfodata }) => {
       <div className={styleValues.values__item}>
         <div className={styleValues.values__item_title}>Market Cap</div>
         <div className={styleValues.values__item_value}>
-          {currencySymbols[dataCurr]}
+          {currenciesSymbols[dataCurr]}
           {market_cap[dataCurr] || 0}
         </div>
       </div>
@@ -32,7 +32,7 @@ const Values: React.FC<ICoinInfoData> = ({ coininfodata }) => {
           Fully Diluted Valuation
         </div>
         <div className={styleValues.values__item_value}>
-          {currencySymbols[dataCurr]}
+          {currenciesSymbols[dataCurr]}
           {fully_diluted[dataCurr] || 0}
         </div>
       </div>

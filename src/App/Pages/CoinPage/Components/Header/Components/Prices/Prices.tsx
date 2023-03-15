@@ -1,6 +1,6 @@
 import React from "react";
 
-import { currencySymbols } from "@Configs/currencySymbols";
+import { currenciesSymbols } from "@Configs/currenciesSymbols";
 import { useParams } from "react-router-dom";
 
 import stylePrices from "./stylePrices.module.scss";
@@ -26,7 +26,7 @@ const Prices: React.FC<ICoinInfoData> = ({ coininfodata }) => {
   return coinsPrices ? (
     <div className={stylePrices.prices}>
       <div className={stylePrices.prices__current}>
-        {currencySymbols[dataCurr]}
+        {currenciesSymbols[dataCurr]}
         {current_price[dataCurr] || 0}
       </div>
       <div className={stylePrices[selectColor(price_change)]}>

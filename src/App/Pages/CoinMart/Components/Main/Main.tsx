@@ -2,7 +2,7 @@ import React from "react";
 
 import { Card } from "@Components/Card";
 import { WithLoader } from "@Components/WithLoader";
-import { currencySymbols } from "@Configs/currencySymbols";
+import { currenciesSymbols } from "@Configs/currenciesSymbols";
 import { IMAINDATAMarket } from "@Interfaces/IMAINDATAMarket";
 import { IMAINDATASearch } from "@Interfaces/IMAINDATASearch";
 import { Link } from "react-router-dom";
@@ -45,7 +45,7 @@ const Main: React.FC<ICoinMarketData> = ({
               className={selectColor(coins.price_change_percentage_24h)}
               price={
                 <div>
-                  {currencySymbols[coins.currency]}
+                  {currenciesSymbols[coins.currency]}
                   {coins.current_price || 0}
                 </div>
               }
