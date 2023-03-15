@@ -1,4 +1,4 @@
-export const currencyCodes: string[] = [
+export const currenciesCodes: string[] = [
   "btc",
   "eth",
   "ltc",
