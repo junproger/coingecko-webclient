@@ -5,6 +5,8 @@ export interface IAPIDATAMarket {
   image: string;
   errors: string;
   currency: string;
+  factpage: number;
+  endpage: boolean;
   current_price: number;
   market_cap: number;
   market_cap_rank: number;

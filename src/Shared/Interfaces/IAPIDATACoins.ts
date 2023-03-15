@@ -4,6 +4,8 @@ export interface IAPIDATACoins {
   name: string;
   errors: string;
   currency: string;
+  factpage: number;
+  endpage: boolean;
   categories: string[];
   market_cap_rank: number;
   image: {
