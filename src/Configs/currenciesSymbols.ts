@@ -1,8 +1,8 @@
-export interface ICurrencySymbols {
+export interface ICurrenciesSymbols {
   [index: string]: string;
 }
 
-export const currencySymbols: ICurrencySymbols = {
+export const currenciesSymbols: ICurrenciesSymbols = {
   btc: "₿",
   eth: "Ξ",
   ltc: "Ł",
