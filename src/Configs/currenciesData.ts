@@ -1,4 +1,4 @@
-export interface ICurrencyData {
+export interface ICurrenciesData {
   [index: string]:
     | {
         [index: string]: string;
@@ -6,7 +6,7 @@ export interface ICurrencyData {
     | {};
 }
 
-export const currencyData: ICurrencyData = {
+export const currenciesData: ICurrenciesData = {
   aed: { aed: "د.إ" },
   ars: { ars: "Ar$" },
   aud: { aud: "A$" },
