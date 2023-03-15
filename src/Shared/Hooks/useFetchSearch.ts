@@ -11,12 +11,12 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
   const urlCoinMart: string = dataScheme.request;
 
   const [getSearchCoins, setSearchCoins] = useState<IMAINDATASearch>({
-    paging: 1,
     errors: "",
     queries: "btc",
     currency: "btc",
-    totalitems: 0,
-    thepageend: 0,
+    factpage: 0,
+    perpage: 0,
+    endpage: false,
     results: [],
   });
 
@@ -30,12 +30,12 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
           url: urlCoinMart,
         });
         setSearchCoins({
-          paging: 1,
           errors: dataScheme.errors,
           queries: dataScheme.queries,
           currency: dataScheme.currency,
-          totalitems: result.data.coins.length,
-          thepageend: Math.trunc(result.data.coins.length / 10),
+          factpage: dataScheme.factpage,
+          perpage: dataScheme.perpage,
+          endpage: result.data.length < dataScheme.perpage,
           results: result.data.coins.map((dump: IAPIDATASearch) => ({
             id: dump.id,
             name: dump.name,
@@ -43,6 +43,8 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
             symbol: dump.symbol,
             errors: dataScheme.errors,
             currency: dataScheme.currency,
+            factpage: dataScheme.factpage,
+            endpage: result.data.length < dataScheme.perpage,
             market_cap_rank: dump.market_cap_rank,
             thumb: dump.thumb,
             large: dump.large,
@@ -55,12 +57,12 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
           const errorMessage = apiError.message;
           setSearchCoins((prevdata) => {
             return {
-              paging: 0,
               errors: "Request failed! The code of currency is incorrect!",
-              queries: "",
-              currency: "",
-              totalitems: 0,
-              thepageend: 0,
+              queries: dataScheme.queries,
+              currency: dataScheme.currency,
+              factpage: dataScheme.factpage,
+              perpage: dataScheme.perpage,
+              endpage: false,
               results: [...prevdata.results],
             };
           });
@@ -85,7 +87,9 @@ export const useFetchSearch = (defaultQuery: IQUERYMarket) => {
   }, [
     dataScheme.currency,
     dataScheme.errors,
+    dataScheme.factpage,
     dataScheme.hook,
+    dataScheme.perpage,
     dataScheme.queries,
     urlCoinMart,
   ]);

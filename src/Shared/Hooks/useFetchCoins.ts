@@ -11,10 +11,12 @@ export const useFetchCoins = (defaultQuery: IQUERYCoins) => {
   const urlCoinInfo: string = dataScheme.request;
 
   const [getCoinsInfo, setCoinsInfo] = useState<IMAINDATACoins>({
-    paging: 0,
     errors: "",
     queries: "bitcoin",
     currency: "btc",
+    factpage: 0,
+    perpage: 0,
+    endpage: true,
     results: [],
   });
 
@@ -31,16 +33,20 @@ export const useFetchCoins = (defaultQuery: IQUERYCoins) => {
         const jsondata: IAPIDATACoins[] = [];
         jsondata.push(apidata);
         setCoinsInfo({
-          paging: 0,
           errors: dataScheme.errors,
           queries: dataScheme.queries,
           currency: dataScheme.currency,
+          factpage: dataScheme.factpage,
+          perpage: dataScheme.perpage,
+          endpage: result.data.length < dataScheme.perpage,
           results: jsondata.map((dump: IAPIDATACoins) => ({
             id: dump.id,
             symbol: dump.symbol,
             name: dump.name,
             errors: dataScheme.errors,
             currency: dataScheme.currency,
+            factpage: dataScheme.factpage,
+            endpage: result.data.length < dataScheme.perpage,
             categories: dump.categories,
             market_cap_rank: dump.market_cap_rank,
             image: {
@@ -80,10 +86,12 @@ export const useFetchCoins = (defaultQuery: IQUERYCoins) => {
           const errorMessage = apiError.message;
           setCoinsInfo((prevdata) => {
             return {
-              paging: 0,
               errors: "Request failed! The code of coin is incorrect!",
-              queries: "",
-              currency: "",
+              queries: dataScheme.queries,
+              currency: dataScheme.currency,
+              factpage: dataScheme.factpage,
+              perpage: dataScheme.perpage,
+              endpage: true,
               results: { ...prevdata.results },
             };
           });
@@ -108,7 +116,9 @@ export const useFetchCoins = (defaultQuery: IQUERYCoins) => {
   }, [
     dataScheme.currency,
     dataScheme.errors,
+    dataScheme.factpage,
     dataScheme.hook,
+    dataScheme.perpage,
     dataScheme.queries,
     urlCoinInfo,
   ]);

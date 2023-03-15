@@ -11,12 +11,12 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   const urlCoinMart: string = dataScheme.request;
 
   const [getMarketCoins, setMartketCoins] = useState<IMAINDATAMarket>({
-    paging: 1,
     errors: "",
     queries: "btc",
     currency: "btc",
-    totalitems: 0,
-    thepageend: 0,
+    factpage: 0,
+    perpage: 0,
+    endpage: false,
     results: [],
   });
 
@@ -30,12 +30,12 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
           url: urlCoinMart,
         });
         setMartketCoins({
-          paging: 1,
           errors: dataScheme.errors,
           queries: dataScheme.queries,
           currency: dataScheme.currency,
-          totalitems: result.data.length,
-          thepageend: Math.trunc(result.data.length / 10),
+          factpage: dataScheme.factpage,
+          perpage: dataScheme.perpage,
+          endpage: result.data.length < dataScheme.perpage,
           results: result.data.map((dump: IAPIDATAMarket) => ({
             id: dump.id,
             symbol: dump.symbol,
@@ -43,6 +43,8 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
             image: dump.image,
             errors: dataScheme.errors,
             currency: dataScheme.currency,
+            factpage: dataScheme.factpage,
+            endpage: result.data.length < dataScheme.perpage,
             current_price: dump.current_price,
             market_cap: dump.market_cap,
             market_cap_rank: dump.market_cap_rank,
@@ -57,12 +59,12 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
           const errorMessage = apiError.message;
           setMartketCoins((prevdata) => {
             return {
-              paging: 0,
               errors: "Request failed! The code of currency is incorrect!",
-              queries: "",
-              currency: "",
-              totalitems: 0,
-              thepageend: 0,
+              queries: dataScheme.queries,
+              currency: dataScheme.currency,
+              factpage: dataScheme.factpage,
+              perpage: dataScheme.perpage,
+              endpage: false,
               results: [...prevdata.results],
             };
           });
@@ -87,7 +89,9 @@ export const useFetchMarket = (defaultQuery: IQUERYMarket) => {
   }, [
     dataScheme.currency,
     dataScheme.errors,
+    dataScheme.factpage,
     dataScheme.hook,
+    dataScheme.perpage,
     dataScheme.queries,
     urlCoinMart,
   ]);
