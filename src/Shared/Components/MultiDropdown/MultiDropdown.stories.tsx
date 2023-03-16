@@ -2,14 +2,12 @@ import React from "react";
 
 import "@Styles/styleIndex.scss";
 
+import { categoriesList } from "@Configs/categoriesList";
+
 import { MultiDropdown } from "./MultiDropdown";
 import { MultiDropdownProps, Option } from "./propsMultiDropdown";
 
-const OPTIONS = [
-  { key: "msk", value: "Moscow" },
-  { key: "spb", value: "Saint Petersburg" },
-  { key: "ekb", value: "Ekaterinburg" },
-];
+const OPTIONS = categoriesList;
 
 export default {
   title: "MultiDropdown",
@@ -27,6 +25,14 @@ export default {
       },
       control: "boolean",
     },
+    multiChoose: {
+      mapping: {
+        true: true,
+        false: false,
+        undefined: undefined,
+      },
+      control: "boolean",
+    },
   },
 };
 
@@ -37,13 +43,15 @@ export const Default = (props: MultiDropdownProps) => {
 
   return (
     <MultiDropdown
-      disabled={props.disabled}
-      options={OPTIONS}
-      onChange={setValue}
       value={value}
+      options={OPTIONS}
+      tabIndex={1}
+      multiChoose={props.multiChoose}
+      onChange={setValue}
       pluralizeOptions={(values: Option[]) =>
-        values.length === 0 ? "Выберите город" : `Выбрано: ${values.length}`
+        values.length === 0 ? "Choose an options" : `Choosed: ${values.length}`
       }
+      disabled={props.disabled}
     />
   );
 };
