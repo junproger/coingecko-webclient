@@ -6,14 +6,15 @@ import { MultiDropdownProps, Option } from "./propsMultiDropdown";
 import styleMultiDropdown from "./styleMultiDropdown.module.scss";
 
 export const MultiDropdown: React.FC<MultiDropdownProps> = ({
-  tabIndex = 1,
   value = [],
-  options,
+  options = [],
+  tabIndex = 1,
+  multiChoose = false,
   onChange,
-  placeHolder,
-  disabled = false,
   pluralizeOptions,
+  placeHolder,
   className,
+  disabled = false,
 }) => {
   /** State for a visibility of MDD list */
   const [getVisible, setVisible] = useState<boolean>(false);
@@ -27,16 +28,20 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
 
   /** Handler for the selected options MDD */
   const clickHandle = (option: Option) => {
-    if (value.every((item) => item.key !== option.key)) {
-      onChange([...value, option]);
+    if (value.every((item) => item.category_id !== option.category_id)) {
+      if (multiChoose) {
+        onChange([...value, option]);
+      } else {
+        onChange([option]);
+      }
     } else {
-      onChange(value.filter((item) => item.key !== option.key));
+      onChange(value.filter((item) => item.category_id !== option.category_id));
     }
   };
 
   /** Checking are choosed options */
   const isItemChoosed = (item: Option) => {
-    if (value.find((elem) => elem.key === item.key)) {
+    if (value.find((elem) => elem.category_id === item.category_id)) {
       return true;
     } else {
       return false;
@@ -65,8 +70,8 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
         <div className={styleMultiDropdown["multi-dropdown__list"]}>
           {options.map((option) => (
             <div
-              id={option.key}
-              key={option.key}
+              id={option.category_id}
+              key={option.category_id}
               onClick={() => clickHandle(option)}
               className={
                 isItemChoosed(option)
@@ -74,7 +79,8 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
                   : `${styleMultiDropdown["multi-dropdown__item"]}`
               }
             >
-              {option.value}
+              <span>{option.name}</span>
+              <span>{isItemChoosed(option) && "✓"}</span>
             </div>
           ))}
         </div>
