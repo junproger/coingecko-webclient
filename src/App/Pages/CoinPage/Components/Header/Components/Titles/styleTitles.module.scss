@@ -8,7 +8,9 @@
   min-height: 24px;
   @include flexrows;
   gap: 12px;
-  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $bg-tertiary;
+  margin-bottom: 6px;
 
   &__back {
     width: 10px;
