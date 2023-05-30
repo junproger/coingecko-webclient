@@ -1,0 +1,31 @@
+.button {
+  width: auto;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 6px;
+  border-radius: 6px;
+  background-color: #DFE2E4;
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  line-height: 18px;
+  color: #343A40;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+
+  &:disabled,
+  &_disabled {
+    cursor: default;
+    opacity: 0.3;
+  }
+  
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@Assets/*": ["./src/Assets/*"],
+      "@Components/*": ["./src/Shared/Components/*"],
+      "@Configs/*": ["./src/Configs/*"],
+      "@Hooks/*": ["./src/Shared/Hooks/*"],
+      "@Queries/*": ["./src/Shared/Queries/*"],
+      "@Styles/*": ["./src/Styles/*"],
+      "@Utils/*": ["./src/Utils/*"]
+    }
+  }
+}

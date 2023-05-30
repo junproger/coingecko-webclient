@@ -1,0 +1,97 @@
+@import "@Styles/styleRoot.scss";
+
+.card {
+  width: 100%;
+  max-width: 343px;
+  height: 72px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  background-color: $bg-primary;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
+  border-radius: 8px;
+  padding: 16px;
+
+  &:focus {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__titles {
+    width: auto;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  &__titles_title {
+    width: auto;
+    height: 20px;
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    color: $text-primary;
+  }
+
+  &__titles_subtitle {
+    width: auto;
+    height: 15px;
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 0;
+    color: $text-tertiary;
+  }
+
+  &__content {
+    width: auto;
+    height: 40px;
+    margin-left: auto;
+    overflow: hidden;
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: right;
+    color: $text-secondary;
+
+    &_up {
+      color: $color-green;
+    }
+
+    &_down {
+      color: $color_red;
+    }
+  }
+
+  &__content > div + div {
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}

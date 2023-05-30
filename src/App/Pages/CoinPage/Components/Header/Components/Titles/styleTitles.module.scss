@@ -1,0 +1,60 @@
+@import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
+
+.titles {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  min-height: 24px;
+  @include flexrows;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  &__link {
+    width: 10px;
+    height: 15px;
+    @include flexcols;
+  }
+
+  &__coins {
+    height: 24px;
+    @include flexrows;
+    align-items: center;
+    gap: 6px;
+
+    &_icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &_image {
+      width: 24px;
+      height: 24px;
+    }
+
+    &_title {
+      font-family: 'Circular Std';
+      font-style: normal;
+      font-weight: 450;
+      font-size: 16px;
+      line-height: 20px;
+      color: $text-primary;
+    }
+
+    &_subtitle {
+      font-family: 'Circular Std';
+      font-style: normal;
+      font-weight: 450;
+      font-size: 10px;
+      line-height: 14px;
+      color: $text-tertiary;
+    }
+
+  }
+
+  &__star {
+    width: 17px;
+    height: 15px;
+  }
+
+}

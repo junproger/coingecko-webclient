@@ -1,0 +1,116 @@
+.multi-dropdown {
+  width: 100%;
+  max-width: 226px;
+  height: auto;
+  min-height: 24px;
+  position: relative;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__window {
+    width: 100%;
+    max-width: 226px;
+    height: 24px;
+    max-height: 24px;
+    position: relative;
+    overflow: hidden;
+    padding: 4px 0 4px 8px;
+    background-color: #FFFFFF;
+    border: 0.5px solid #DFE2E4;
+    border-radius: 12px;
+    font-family: "Circular Std";
+    font-style: normal;
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 16px;
+    color: #343A40;
+  }
+
+  &__window_holder {
+    color: #6C757D;
+  }
+
+  &__window::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    right: 10px;
+    width: 7px;
+    height: 5px;
+    pointer-events: none;
+    background-color: #6C757D;
+    clip-path: polygon(50% 100%, 100% 0, 0 0);
+  }
+
+  &__window:focus,
+  &__window:hover {
+    border: 0.5px solid #6C757D;
+  }
+
+  &__list {
+    width: 100%;
+    max-width: 226px;
+    height: auto;
+    max-height: 126px;
+    position: absolute;
+    left: 0;
+    top: 32px;
+    border: 1px solid #DFE2E4;
+    border-radius: 12px;
+    overflow-y: scroll;
+  }
+
+  &__list::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__list {
+    scrollbar-width: 0;
+  }
+
+  &__item {
+    width: 100%;
+    max-width: 226px;
+    height: auto;
+    min-height: 24px;
+    background-color: #FFFFFF;
+    border-top: 0.5px solid #DFE2E4;
+    padding: 4px 0 4px 8px;
+    font-family: 'Circular Std';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 12px;
+    line-height: 16px;
+    color: #343A40;
+  }
+
+  &__item:first-child {
+    border-top: none;
+  }
+  
+  &__item:hover {
+    background-color: #F8F9FA;
+    cursor: pointer;
+  }
+
+  &__item_choosed {
+    background-color: #F8F9FA;
+  }
+
+  &__item_choosed:hover {
+    background-color: #FFFFFF;
+  }
+
+  &:disabled > &__window,
+  &_disabled > &__window {
+    border: 0.5px solid #DFE2E4;
+    background-color: #F8F9FA;
+    cursor: default;
+  }
+
+}
