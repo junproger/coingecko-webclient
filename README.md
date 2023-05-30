@@ -14,6 +14,6 @@ Web-client for CoinGecko API in ReactJS.
 8. Cra-states (App without state managers): React state with Routing, useState and React.Context.
 9. Features (Add more features to web-client): multi-dropdown, currency-filter and market-search.
 10. Categories (Add category API for coins): binding api to dropdown-lists on market & coins pages.
-11. Cra-stores (App with local stores and queries): 
-12. With-mobx (React App with MobX state manager): 
+11. Cra-stores (App with local stores and queries): no implementation yet
+12. With-mobx (React App with MobX state manager): no implementation yet
 
