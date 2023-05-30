@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@mixin flexwrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
 @mixin flexcols {
   display: flex;
   flex-flow: column nowrap;
