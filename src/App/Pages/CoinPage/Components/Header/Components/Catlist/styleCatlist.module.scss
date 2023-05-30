@@ -1,0 +1,27 @@
+@import "@Styles/styleRoot.scss";
+@import "@Styles/styleMixin.scss";
+
+.catlist {
+  width: 100%;
+  max-width: 375px;
+  height: auto;
+  min-height: 25px;
+  @include flexwrap;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $bg-tertiary;
+  margin-bottom: 10px;
+
+  &__title {
+    font-size: 14px;
+    line-height: 25px;
+    color: $text-primary;
+  }
+
+  &__dropdown {
+    font-size: 14px;
+    line-height: 25px;
+    color: $text-primary;
+  }
+
+}

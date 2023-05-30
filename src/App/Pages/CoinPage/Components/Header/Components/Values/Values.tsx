@@ -1,26 +1,40 @@
 import React from "react";
 
+import { Loader, LoaderSize } from "@Components/Loader";
+import { currenciesSymbols } from "@Configs/currenciesSymbols";
+import { useParams } from "react-router-dom";
+
 import styleValues from "./styleValues.module.scss";
-import { ICoinInfoData } from "../../Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Values: React.FC<ICoinInfoData> = ({ coininfodata }) => {
-  const market_cap = coininfodata?.market_data.market_cap.usd;
-  const fully_diluted = coininfodata?.market_data.fully_diluted_valuation.usd;
-  const circulating = coininfodata?.market_data.circulating_supply;
-  const total_supply = coininfodata?.market_data.total_supply;
-  const max_supply = coininfodata?.market_data.max_supply;
+  const coinsValues = coininfodata && coininfodata?.market_data;
+  const { idcurr } = useParams<{ idcurr: string }>();
+  const dataCurr = idcurr || "usd";
 
-  return (
+  const market_cap = coinsValues?.market_cap;
+  const fully_diluted = coinsValues?.fully_diluted_valuation;
+  const circulating = coinsValues?.circulating_supply;
+  const total_supply = coinsValues?.total_supply;
+  const max_supply = coinsValues?.max_supply;
+
+  return coinsValues ? (
     <div className={styleValues.values}>
       <div className={styleValues.values__item}>
         <div className={styleValues.values__item_title}>Market Cap</div>
-        <div className={styleValues.values__item_value}>{market_cap}</div>
+        <div className={styleValues.values__item_value}>
+          {currenciesSymbols[dataCurr]}
+          {market_cap[dataCurr] || 0}
+        </div>
       </div>
       <div className={styleValues.values__item}>
         <div className={styleValues.values__item_title}>
           Fully Diluted Valuation
         </div>
-        <div className={styleValues.values__item_value}>{fully_diluted}</div>
+        <div className={styleValues.values__item_value}>
+          {currenciesSymbols[dataCurr]}
+          {fully_diluted[dataCurr] || 0}
+        </div>
       </div>
       <div className={styleValues.values__item}>
         <div className={styleValues.values__item_title}>Circulating Supply</div>
@@ -35,6 +49,8 @@ const Values: React.FC<ICoinInfoData> = ({ coininfodata }) => {
         <div className={styleValues.values__item_value}>{max_supply}</div>
       </div>
     </div>
+  ) : (
+    <Loader loading={true} size={LoaderSize.m} />
   );
 };
 

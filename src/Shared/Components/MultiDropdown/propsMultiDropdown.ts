@@ -1,14 +1,15 @@
 export interface Option {
-  /** Ключ варианта, используется в скриптах */
-  key: string;
-  /** Значение варианта, отображается на сайте */
-  value: string;
+  /** Key of item, using in scripts */
+  category_id: string;
+  /** Value of item, show to users */
+  name: string;
 }
 
 export interface MultiDropdownProps {
-  tabIndex?: number;
   value: Option[];
   options: Option[];
+  tabIndex?: number;
+  multiChoose?: boolean;
   onChange: (value: Option[]) => void;
   pluralizeOptions: (value: Option[]) => string;
   placeHolder?: string;

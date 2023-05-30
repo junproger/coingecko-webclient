@@ -1,40 +1,42 @@
 @import "@Styles/styleRoot.scss";
 @import "@Styles/styleMixin.scss";
 
+@mixin changes {
+  width: 132px;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 .prices {
   width: 100%;
   max-width: 375px;
-  height: 30px;
+  height: auto;
+  min-height: 30px;
   @include flexrows;
   align-items: baseline;
   gap: 12px;
-  margin-bottom: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid $bg-tertiary;
+  margin-bottom: 10px;
 
   &__current {
     width: 121px;
     height: 30px;
-    font-family: 'Circular Std';
-    font-style: normal;
-    font-weight: 500;
     font-size: 24px;
     line-height: 30px;
     color: $text-primary;
   }
 
   &__changes {
-    width: 132px;
-    height: 20px;
-    font-family: 'Circular Std';
-    font-style: normal;
-    font-weight: 450;
-    font-size: 16px;
-    line-height: 20px;
 
     &_up {
+      @include changes();
       color: $color-green;
     }
-
-    &_down {
+  
+    &_down{
+      @include changes();
       color: $color_red;
     }
 

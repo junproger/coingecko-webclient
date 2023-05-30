@@ -1,44 +1,70 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Button } from "@Components/Button";
 import { Input } from "@Components/Input";
-import { loging } from "@Utils/loging";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styleSearch from "./styleSearch.module.scss";
-import { ICoinMartQuery } from "../../Interfaces/ICoinMartQuery";
 
-const Search: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
+interface ISearchWithError {
+  coinmarterror: string;
+}
+
+const Search: React.FC<ISearchWithError> = ({ coinmarterror }) => {
+  const { idpage } = useParams<{ idpage: string }>();
+  const numbPage = idpage || "1";
+  const navigate = useNavigate();
+
   const [value, setValue] = useState<string>("");
 
   const handleChange = (value: string): void => {
-    setValue(value);
+    setValue(value.trim().toLowerCase());
   };
 
-  const setupQuerySearch = (value: string) => {
-    const hook = "search";
-    const control = null;
-    const handler = null;
-    const queries = value;
-    const request = "https://api.coingecko.com/api/v3/search?query=";
-    const apidata = null;
-    loging({
-      hook: hook,
-      control: control,
-      handler: handler,
-      query: queries,
-      request: request,
-      apidata: apidata,
-    });
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handlerEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!value.trim()) return setValue("");
+    if (e.key === "Enter") {
+      return value && navigate(`/${value}/pages/${numbPage}`);
+    }
+    return value;
+  };
+
+  const handlerClick = () => {
+    if (!value.trim()) return setValue("");
+    if (inputRef.current) inputRef.current.focus();
+    return value && navigate(`/${value}/pages/${numbPage}`);
+  };
+
+  const addErrorClass = {
+    coinmarterror: coinmarterror,
+    addincorrect: coinmarterror && "input_incorrect",
   };
 
   return (
     <div className={styleSearch.search}>
       <Input
         value={value}
-        placeholder="Search Cryptocurrency"
+        inputref={inputRef}
+        placeholder="Search in currency: btc, usd, eur, gbp, jpy ..."
         onChange={handleChange}
+        onKeyDown={handlerEnter}
+        className={addErrorClass.addincorrect}
       />
-      <Button loading={false} onClick={() => setupQuerySearch(value)}>
+      {value && (
+        <Button
+          loading={false}
+          className="button_clear"
+          onClick={() => {
+            setValue("");
+            inputRef.current && inputRef.current.focus();
+          }}
+        >
+          clear
+        </Button>
+      )}
+      <Button loading={false} onClick={handlerClick} disabled={!value}>
         <svg
           width="20"
           height="20"

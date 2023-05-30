@@ -2,27 +2,29 @@ import React, { useState } from "react";
 
 import { LogoType } from "@Components/LogoType";
 import { MultiDropdown, Option } from "@Components/MultiDropdown";
+import { categoriesList } from "@Configs/categoriesList";
+import { useNavigate, useParams } from "react-router-dom";
 
 import styleChoose from "./styleChoose.module.scss";
 
 const Choose: React.FC = () => {
-  const options: Option[] = [
-    { key: "msk", value: "Moscow" },
-    { key: "nnv", value: "Nizhny Novgorod" },
-    { key: "rnd", value: "Rostov-na-Donu" },
-    { key: "spb", value: "Saint-Petersburg" },
-    { key: "vvk", value: "Vladivostok" },
-    { key: "ekb", value: "Yekaterinburg" },
-  ];
+  const { idcurr } = useParams<{ idcurr: string }>();
+  const currPage = idcurr || "usd";
+  const navigate = useNavigate();
+
+  const options: Option[] = categoriesList;
 
   const pluralizeOptions = (elements: Option[]) =>
-    elements.map((elm: Option) => elm.value).join();
+    elements.map((elm: Option) => elm.name).join();
 
   const [value, setValue] = useState<Option[]>([]);
 
   return (
     <div className={styleChoose.choose}>
-      <LogoType children="Coinmart" />
+      <LogoType
+        children="Coinmart"
+        onClick={() => navigate(`/${currPage}/pages/1`)}
+      />
       <MultiDropdown
         tabIndex={1}
         value={value}

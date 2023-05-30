@@ -1,16 +1,18 @@
 import React from "react";
 
 import { Loader, LoaderSize } from "@Components/Loader";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styleTitles from "./styleTitles.module.scss";
-import { ICoinInfoData } from "../../Interfaces/ICoinInfoData";
+import { ICoinInfoData } from "../../Interface/ICoinInfoData";
 
 const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
+  const coinsTitles = coininfodata && coininfodata;
+  const navigate = useNavigate();
   return (
     <div className={styleTitles.titles}>
-      <div className={styleTitles.titles__link}>
-        <Link to={"/"}>
+      <div className={styleTitles.titles__back}>
+        <div onClick={() => navigate(-1)}>
           <svg
             width="10"
             height="15"
@@ -23,22 +25,22 @@ const Titles: React.FC<ICoinInfoData> = ({ coininfodata }) => {
               fill="#212529"
             />
           </svg>
-        </Link>
+        </div>
       </div>
-      {coininfodata?.id ? (
+      {coinsTitles ? (
         <div className={styleTitles.titles__coins}>
           <div className={styleTitles.titles__coins_icon}>
             <img
               className={styleTitles.titles__coins_image}
-              alt={coininfodata?.name}
-              src={coininfodata?.image.thumb}
+              alt={coinsTitles.name}
+              src={coinsTitles.image.thumb}
             />
           </div>
           <div className={styleTitles.titles__coins_title}>
-            {coininfodata?.name}
+            {coinsTitles.name}
           </div>
           <div className={styleTitles.titles__coins_subtitle}>
-            ({coininfodata?.symbol.toUpperCase()})
+            ({coinsTitles.symbol.toUpperCase()})
           </div>
         </div>
       ) : (

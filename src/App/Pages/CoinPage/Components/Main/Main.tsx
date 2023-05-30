@@ -3,18 +3,17 @@ import React from "react";
 import { WithLoader } from "@Components/WithLoader";
 
 import styleMain from "./styleMain.module.scss";
+import { ICoinInfoData } from "../Header/Interface/ICoinInfoData";
 
-interface IDescrption {
-  description: string | "";
-}
+const Main: React.FC<ICoinInfoData> = ({ coininfodata }) => {
+  const description = coininfodata && coininfodata.description;
 
-const Main: React.FC<IDescrption> = ({ description }) => {
   return description ? (
     <main className={styleMain.main}>
       <h3 className={styleMain.main__title}>Description</h3>
       <div
         className={styleMain.main__text}
-        dangerouslySetInnerHTML={{ __html: description }}
+        dangerouslySetInnerHTML={{ __html: description["en"] }}
       />
     </main>
   ) : (

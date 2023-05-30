@@ -77,13 +77,18 @@
     text-align: right;
     color: $text-secondary;
 
-    &_up {
-      color: $color-green;
+    &_price-grey > div {
+      color: $text-secondary;
     }
 
-    &_down {
+    &_change-green > div {
+      color: $color-green;
+    }
+  
+    &_change-red > div {
       color: $color_red;
     }
+
   }
 
   &__content > div + div {

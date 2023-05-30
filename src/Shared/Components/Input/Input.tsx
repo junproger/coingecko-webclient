@@ -6,17 +6,18 @@ import { InputProps } from "./propsInput";
 import styleInput from "./styleInput.module.scss";
 
 export const Input: React.FC<InputProps> = ({
+  inputref,
   value = "",
   placeholder = "",
   onChange,
-  className,
+  className = "",
   disabled = false,
   ...attrib
 }) => {
   const inputClasses = classNames(
     styleInput.input,
     { [styleInput.input_disabled]: disabled },
-    className
+    styleInput[className]
   );
   const inputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     return onChange(event.target.value);
@@ -25,6 +26,7 @@ export const Input: React.FC<InputProps> = ({
     <input
       type="text"
       value={value}
+      ref={inputref}
       className={inputClasses}
       placeholder={placeholder}
       onChange={inputHandler}

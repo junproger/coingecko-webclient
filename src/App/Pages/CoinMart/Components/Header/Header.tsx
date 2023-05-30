@@ -2,14 +2,19 @@ import React from "react";
 
 import Choose from "./Components/Choose";
 import Navigate from "./Components/Navigate";
+import Notice from "./Components/Notice";
 import Search from "./Components/Search";
-import { ICoinMartQuery } from "./Interfaces/ICoinMartQuery";
 import styleHeader from "./styleHeader.module.scss";
 
-const Header: React.FC<ICoinMartQuery> = ({ coinmartquery }) => {
+interface IHeaderWithError {
+  coinmarterror: string;
+}
+
+const Header: React.FC<IHeaderWithError> = ({ coinmarterror }) => {
   return (
     <header className={styleHeader.header}>
-      <Search coinmartquery={coinmartquery} />
+      <Search coinmarterror={coinmarterror} />
+      <Notice coinmarterror={coinmarterror} />
       <Choose />
       <Navigate />
     </header>

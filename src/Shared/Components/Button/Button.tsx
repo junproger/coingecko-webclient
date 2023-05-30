@@ -10,14 +10,14 @@ export const Button: React.FC<ButtonProps> = ({
   loading = false,
   disabled = false,
   onClick,
-  className,
+  className = "",
   children,
   ...attrib
 }) => {
   const buttonClasses = classNames(
     styleButton.button,
     { [styleButton.button_disabled]: loading || disabled },
-    className
+    styleButton[className]
   );
   return (
     <button

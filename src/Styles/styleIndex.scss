@@ -6,8 +6,8 @@ body,
 .root {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	-ms-box-sizing: inherit;
-	-o-box-sizing: inherit;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -35,4 +35,5 @@ body,
 
 a {
 	text-decoration: none;
+	color: $text-default;
 }
